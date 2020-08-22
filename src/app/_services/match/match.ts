@@ -1,0 +1,94 @@
+export interface Match {
+    matchid: number;
+    season: number;
+    comp: number;
+    matchdate: Date;
+    matchtime: string;
+    t1: number;
+    t2: number;
+    t1goalft: number;
+    t2goalft: number;
+    resultft: string;
+    t1goalht: number;
+    t2goalht: number;
+    resultht: string;
+    t1shots: number;
+    t2shots: number;
+    t1shotsot: number;
+    t2shotsot: number;
+    t1fouls: number;
+    t2fouls: number;
+    t1corners: number;
+    t2corners: number;
+    t1y: number;
+    t2y: number;
+    t1r: number;
+    t2r: number;
+    t1poss: number;
+    t2poss: number;
+    spectators: number;
+    stadium: number;
+    neutral_match: boolean;
+    stage: number;
+  }
+
+export interface MatchRaw {
+  matchid: number;
+  season: number;
+  comp: number;
+  matchdate: Date;
+  fmatchdate: string;
+  matchtime: string;
+  t1goalft: number;
+  t2goalft: number;
+  resultft: string;
+  t1goalht: number;
+  t2goalht: number;
+  resultht: string;
+  t1shots: number;
+  t2shots: number;
+  t1shotsot: number;
+  t2shotsot: number;
+  t1fouls: number;
+  t2fouls: number;
+  t1corners: number;
+  t2corners: number;
+  t1y: number;
+  t2y: number;
+  t1r: number;
+  t2r: number;
+  t1poss: number;
+  t2poss: number;
+  spectators: number;
+  stadium: number;
+  t1: number;
+  t2: number;
+  t1shortname: string;
+  t2shortname: string;
+  t1country: string;
+  t2country: string;
+  t1city: string;
+  t2city: string;
+  t1code: string;
+  t2code: string;
+  t1association: string;
+  t2association: string;
+  t1confederation: string;
+  t2confederation: string;
+  stadiumname: string;
+  stadiumcity: string;
+  stadiumcountry: string;
+  compname: string;
+  compcode: string;
+  seasonname: string;
+  stageshort: string;
+  stageid: number;
+  neutral_match: boolean;
+}
+
+export interface MatchActionCount {
+  action: string;
+  actioncount: number;
+  matchid: number;
+  actionshort: string;
+}

@@ -1,0 +1,28 @@
+<h3>Persona</h3>
+
+
+<!-- Personas Table -->
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor= "let h of tableHeaders">
+                    <span (click)="sortTable(h.value)">
+                        {{h.header}}
+                    </span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of temptableData">
+                <td>{{x.personaid}}</td>
+                <td>{{x.firstname}}</td>
+                <td>{{x.lastname}}</td>
+                <td>{{x.nationality}}</td>
+                <td>{{x.citizenship}}</td>
+                <td>{{x.fdob}}</td>
+                <td>{{x.notes}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

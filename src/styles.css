@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  font-family: 'Baloo Chettan 2', cursive;
+    color: whitesmoke;
+    background-color: black;
+}
+
+.container {
+    padding: 4px;
+    text-align: center;  
+    overflow-x:auto;
+  }
