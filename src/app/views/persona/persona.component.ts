@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from "../../_services/persona/persona.service";
+import { ModalService } from '../../_modal/modal.service';
 
 @Component({
   selector: 'app-persona',
@@ -10,6 +11,8 @@ export class PersonaComponent implements OnInit {
 
   tableData = [];
   temptableData = [];
+  selectedPersonaID: number;
+  selectedPersona: any;
   sortState: string;
   tableHeaders = [
     {'header': 'PID', 'value': 'personaid'},
@@ -18,11 +21,18 @@ export class PersonaComponent implements OnInit {
     {'header': 'Nationality', 'value': 'nationality'},
     {'header': 'Citizenship', 'value': 'citizenship'},
     {'header': 'Date of Birth (YMD)', 'value': 'fdob'},
-    {'header': 'Nickname', 'value': 'notes'}
+    {'header': 'Nickname', 'value': 'notes'},
+    {'header': 'Details', 'value': 'details'}
+  ];
+
+  filterOptions = [
+    {'option': 'Sort ASC'},
+    {'option': 'Sort DESC'},
   ];
 
   constructor(
-    private personaService: PersonaService
+    private personaService: PersonaService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +63,19 @@ export class PersonaComponent implements OnInit {
       this.sortState = 'desc'
     }
     
+  }
+
+  personaDetails(mid:number, modalid:string):void {
+    this.personaService.getPersona(mid)
+      .subscribe(res => {
+        this.selectedPersona = res;
+        this.selectedPersonaID = mid;
+        this.modalService.open(modalid);
+      } );    
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
   }
 
 }

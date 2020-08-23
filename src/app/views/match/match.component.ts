@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from "../../_services/match/match.service";
-import { MatchRaw } from "../../_services/match/match";
 import { CompService } from "../../_services/comp/comp.service";
 import { SeasonService } from "../../_services/season/season.service";
 import { TeamService } from "../../_services/team/team.service";
@@ -102,10 +101,6 @@ export class MatchComponent implements OnInit {
     
   }
 
-  showFilter():void {
-    console.log('open collapsible');
-  }
-
   filterTable(x:string, ft:string): void {
     console.log(x);
     console.log(ft);
@@ -129,6 +124,6 @@ export class MatchComponent implements OnInit {
 
   closeModal(id: string) {
     this.modalService.close(id);
-}
+  }
 
 }

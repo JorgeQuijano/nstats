@@ -3,7 +3,7 @@
 
 <!-- Personas Table -->
 <div>
-    <table>
+    <table class="ptable">
         <thead>
             <tr>
                 <th *ngFor= "let h of tableHeaders">
@@ -22,7 +22,23 @@
                 <td>{{x.citizenship}}</td>
                 <td>{{x.fdob}}</td>
                 <td>{{x.notes}}</td>
+                <td>
+                    <button (click)="personaDetails(x.personaid, 'personaDetailsModal')">🛈</button>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<jw-modal id="personaDetailsModal">
+    <div *ngIf="selectedPersona" class="persona-details-modal">
+        <h4>Persona Details</h4>
+        <span>{{selectedPersona.fullname}} ({{selectedPersona.nationality}}, {{selectedPersona.citizenship}})</span>
+        <br>
+        <span>{{selectedPersona.fdob}}</span>
+        <br>
+        <span *ngIf="selectedPersona.notes != ''">{{selectedPersona.notes}}</span>
+        <br>
+        <button class="modal-button" (click)="closeModal('personaDetailsModal');">Close</button>
+    </div>
+</jw-modal>

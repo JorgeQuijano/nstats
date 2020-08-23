@@ -34,5 +34,12 @@ export class PersonaService {
         catchError(this.handleError('getPersonas', []))
       );
   };
+
+  getPersona (personaid: number): Observable<Persona[]> {
+    return this.http.get<Persona[]>(this.APIURL+`/${personaid}`)
+      .pipe(
+        catchError(this.handleError('getPersona', []))
+      );
+  };
   
 }
