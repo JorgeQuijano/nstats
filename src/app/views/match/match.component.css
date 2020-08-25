@@ -38,8 +38,8 @@ background-color: #006633;
 
 .mdtable {
     /* border-collapse: collapse; */
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    margin: auto;
 }
 
 .mdtable td {

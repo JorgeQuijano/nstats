@@ -24,8 +24,9 @@ jw-modal .jw-modal .jw-modal-body {
   padding: 20px;
   background: #F8F8FF;
   /* margin exposes part of the modal background */
-
-  margin: 40px;
+  margin: auto;
+  margin-top: 100px;
+  width: fit-content;
   border-radius: 4px;
 }
 jw-modal .jw-modal-background {

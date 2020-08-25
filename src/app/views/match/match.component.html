@@ -128,6 +128,39 @@
 
         <br>
 
+        <div *ngIf="selectedMatchActions">
+            <span class="teamName">{{selectedMatchRaw.t1shortname}} - Lineup:</span>
+            <br>
+            <span class="teamName">SXI:</span>
+            <span *ngFor="let x of selectedMatchActions">
+                <span *ngIf="x.action == 'Starting XI' && x.teamid == selectedMatchRaw.t1">{{x.lastname}}, </span>
+            </span>
+            <br>
+            <span class="teamName">Subs:</span>
+            <span *ngFor="let x of selectedMatchActions">
+                <span *ngIf="x.action == 'Substitute' && x.teamid == selectedMatchRaw.t1">{{x.lastname}}, </span>
+            </span>
+            <br>
+            <span class="teamName">{{selectedMatchRaw.t2shortname}} - Lineup:</span>
+            <br>
+            <span class="teamName">SXI:</span>
+            <span *ngFor="let x of selectedMatchActions">
+                <span *ngIf="x.action == 'Starting XI' && x.teamid == selectedMatchRaw.t2">{{x.lastname}}, </span>
+            </span>
+            <br>
+            <span class="teamName">Subs:</span>
+            <span *ngFor="let x of selectedMatchActions">
+                <span *ngIf="x.action == 'Substitute' && x.teamid == selectedMatchRaw.t2">{{x.lastname}}, </span>
+            </span>
+            <br>
+            <span class="teamName">Events: </span>
+            <br>
+            <span *ngFor="let x of selectedMatchActions">
+                <span *ngIf="!(x.action == 'Substitute' || x.action == 'Starting XI' || x.action == 'Subbed Out' || x.action == 'Subbed In' || x.action == 'Manager')">{{x.actionshort}}: {{x.lastname}} ({{x.actiontime}}), </span>
+            </span>
+
+        </div>
+
         <button class="modal-button" (click)="closeModal('matchDetailsModal');">Close</button>
     </div>
 </jw-modal>
