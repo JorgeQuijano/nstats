@@ -31,3 +31,19 @@ export interface ActionRaw {
   seasonid: number;
   persona: string;
 }
+
+export interface MatchActionsSummary {
+  matchid: number;
+  personaid: number;
+  teamid: number;
+  actionshort: string;
+  persona: string;
+  sbo_time: number;
+  sbi_time: number;
+  wo_time: number;
+  gcount: number;
+  acount: number;
+  ogcount: number;
+  ycount: number;
+  rcount: number;
+}

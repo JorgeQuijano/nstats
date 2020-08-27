@@ -5,7 +5,7 @@ import { config } from '../../config';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { Action, ActionRaw } from "./action";
+import { Action, ActionRaw, MatchActionsSummary } from "./action";
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
 
@@ -22,6 +22,7 @@ const httpOptions = {
 export class ActionService {
   APIURL = `${config.apiUrl}/action`;
   APIURLraw = `${config.apiUrl}/action/raw`;
+  matchActionsURL = `${config.apiUrl}/action/raw/match/actions`;
   private handleError: HandleError;
 
   constructor(
@@ -49,6 +50,20 @@ export class ActionService {
     return this.http.get<Action[]>(this.APIURLraw+`/match/${mid}`)
       .pipe(
         catchError(this.handleError('getMatchActions', []))
+      );
+  }
+
+  getMatchActionsSummaryt1 (mid: number): Observable<MatchActionsSummary[]> {
+    return this.http.get<MatchActionsSummary[]>(this.matchActionsURL+`/${mid}/t1`)
+      .pipe(
+        catchError(this.handleError('getMatchActionsSummaryt1', []))
+      );
+  }
+
+  getMatchActionsSummaryt2 (mid: number): Observable<MatchActionsSummary[]> {
+    return this.http.get<MatchActionsSummary[]>(this.matchActionsURL+`/${mid}/t2`)
+      .pipe(
+        catchError(this.handleError('getMatchActionsSummaryt2', []))
       );
   }
 }

@@ -18,7 +18,10 @@ export class MatchComponent implements OnInit {
   temptableData = [];
   selectedMatchID: number;
   selectedMatchRaw: any;
-  selectedMatchActions: any;
+  t1ActionsXI: any;
+  t1ActionsSub: any;
+  t2ActionsXI: any;
+  t2ActionsSub: any;
   comps = [];
   seasons = [];
   teams = [];
@@ -116,10 +119,20 @@ export class MatchComponent implements OnInit {
       .subscribe(res => {
         this.actionService.getMatchActions(mid)
           .subscribe(x => {
-            this.selectedMatchActions = x;
-            this.selectedMatchRaw = res;
-            this.selectedMatchID = mid;
-            this.modalService.open(modalid);
+            this.actionService.getMatchActionsSummaryt1(mid)
+              .subscribe(xt1 => {
+                this.actionService.getMatchActionsSummaryt2(mid)
+                  .subscribe(xt2 => {
+                    this.t1ActionsSub = xt1.filter(x=> x.actionshort == 'Sub');
+                    this.t1ActionsXI = xt1.filter(x=> x.actionshort == 'SXI');
+                    this.t2ActionsXI = xt2.filter(x=> x.actionshort == 'SXI');
+                    this.t2ActionsSub = xt2.filter(x=> x.actionshort == 'Sub');
+                    this.selectedMatchRaw = res;
+                    this.selectedMatchID = mid;
+                    this.modalService.open(modalid);
+                  })
+              })
+            
           });
       } );    
   }
