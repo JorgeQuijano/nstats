@@ -44,3 +44,49 @@ background-color: #006633;
     color: white;
     background-color: grey;
 }
+
+/* Match Details Table */
+
+.pstable {
+    border-collapse: collapse;
+    text-align: center;
+    margin: auto;
+    border: 1px solid grey;
+}
+
+.pstable td {
+    border: 1px solid grey;
+    text-align: center;
+    font-size: 14px;
+  }
+
+.pstable th {
+    border: 1px solid grey;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Icons Colors */
+
+.regularIcon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.gicon {
+    font-size: 16px;
+    color: green;
+    font-weight: bold;
+}
+
+.yicon {
+    font-size: 16px;
+    color: #fada5e;
+    font-weight: bold;
+}
+
+.ricon {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+}

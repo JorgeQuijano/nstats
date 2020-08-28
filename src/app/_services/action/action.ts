@@ -47,3 +47,28 @@ export interface MatchActionsSummary {
   ycount: number;
   rcount: number;
 }
+
+export interface PersonaSummary {
+  personaid: number;
+  firstname: string;
+  lastname: string;
+  notes: string;
+  seasonid: number;
+  season: string;
+  compid: number;
+  compcode: string;
+  sxi: number;
+  sub: number;
+  sbi: number;
+  sbo: number;
+  g: number;
+  a: number;
+  y: number;
+  r: number;
+  mp: number;
+  ps: number;
+  og: number;
+  p: number;
+  pc: number;
+  m: number;
+}

@@ -23,10 +23,10 @@ button{
   }
 
 .mtable th {
-border: 1px solid grey;
-text-align: center;
-font-weight: bold;
-background-color: #006633;
+    border: 1px solid grey;
+    text-align: center;
+    font-weight: bold;
+    background-color: #006633;
 }
 
 .mtable tr:nth-child(even){background-color: #282828;}

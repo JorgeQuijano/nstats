@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from "../../_services/persona/persona.service";
+import { ActionService } from "../../_services/action/action.service";
 import { ModalService } from '../../_modal/modal.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class PersonaComponent implements OnInit {
   temptableData = [];
   selectedPersonaID: number;
   selectedPersona: any;
+  personaSummary: any;
   sortState: string;
   tableHeaders = [
     {'header': 'PID', 'value': 'personaid'},
@@ -32,6 +34,7 @@ export class PersonaComponent implements OnInit {
 
   constructor(
     private personaService: PersonaService,
+    private actionService: ActionService,
     private modalService: ModalService
   ) { }
 
@@ -65,12 +68,17 @@ export class PersonaComponent implements OnInit {
     
   }
 
-  personaDetails(mid:number, modalid:string):void {
-    this.personaService.getPersona(mid)
+  personaDetails(personaid:number, modalid:string):void {
+    this.personaService.getPersona(personaid)
       .subscribe(res => {
-        this.selectedPersona = res;
-        this.selectedPersonaID = mid;
-        this.modalService.open(modalid);
+        this.actionService.getPersonaSummary(personaid)
+          .subscribe(x=> {
+            this.personaSummary = x;
+            this.selectedPersona = res;
+            this.selectedPersonaID = personaid;
+            this.modalService.open(modalid);
+          })
+        
       } );    
   }
 

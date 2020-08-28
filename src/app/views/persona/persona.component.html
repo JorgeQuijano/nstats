@@ -39,6 +39,70 @@
         <br>
         <span *ngIf="selectedPersona.notes != ''">{{selectedPersona.notes}}</span>
         <br>
+        <table *ngIf="personaSummary.length > 0" class="pstable">
+            <tr>
+                <th></th>
+                <th></th>
+                <!-- Played -->
+                <th></th>
+                <!-- Bench -->
+                <th><i class="material-icons regularIcon">airline_seat_recline_normal</i></th>
+                <!-- Goals --> 
+                <th><i class="material-icons gicon">sports_soccer</i></th>
+                <!-- Assists -->
+                <th><i class="material-icons regularIcon">connect_without_contact</i></th>
+                <!-- Yellow Cards -->
+                <th><i class="material-icons yicon">style</i></th>
+                <!-- Red Cards -->
+                <th><i class="material-icons ricon">style</i></th>
+                <!-- Missed Penalties -->
+                <th></th>
+                <!-- Penalties Saved -->
+                <th><i class="material-icons regularIcon">sports_handball</i></th>
+                <!-- Own Goals -->
+                <th><i class="material-icons ricon">sports_soccer</i></th>
+                <!-- Hits the post -->
+                <th></th>
+                <!-- Penalties Conceded -->
+                <th><i class="material-icons regularIcon">sports_kabaddi</i></th>
+                <!-- Manager/DT/Coach -->
+                <th><i class="material-icons regularIcon">support_agent</i></th>
+            </tr>
+            <tr>
+                <th>Season</th>
+                <th>Comp</th>
+                <th>SXI</th>
+                <th>Sub</th>
+                <th>G</th>
+                <th>A</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Miss P</th>
+                <th>Svd Pen</th>
+                <th>OG</th>
+                <th>Post</th>
+                <th>Pen Con</th>
+                <th>Mgr</th>
+            </tr>
+            <tr *ngFor="let x of personaSummary">
+                <td>{{x.season}}</td>
+                <td>{{x.compcode}}</td>
+                <td>{{x.sxi}}</td>
+                <td>{{x.sub}}</td>
+                <td>{{x.g}}</td>
+                <td>{{x.a}}</td>
+                <td>{{x.y}}</td>
+                <td>{{x.r}}</td>
+                <td>{{x.mp}}</td>
+                <td>{{x.ps}}</td>
+                <td>{{x.og}}</td>
+                <td>{{x.p}}</td>
+                <td>{{x.pc}}</td>
+                <td>{{x.m}}</td>
+            </tr>
+        </table>
+        <span *ngIf="personaSummary.length == 0">No actions found for this persona</span>
+        <br>
         <button class="modal-button" (click)="closeModal('personaDetailsModal');">Close</button>
     </div>
 </jw-modal>

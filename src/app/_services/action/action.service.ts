@@ -5,7 +5,7 @@ import { config } from '../../config';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { Action, ActionRaw, MatchActionsSummary } from "./action";
+import { Action, ActionRaw, MatchActionsSummary, PersonaSummary } from "./action";
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
 
@@ -43,6 +43,13 @@ export class ActionService {
     return this.http.get<ActionRaw[]>(this.APIURLraw)
       .pipe(
         catchError(this.handleError('getActionsRaw', []))
+      );
+  }
+
+  getPersonaSummary (pid: number): Observable<PersonaSummary[]> {
+    return this.http.get<PersonaSummary[]>(this.APIURL+`/summary/${pid}`)
+      .pipe(
+        catchError(this.handleError('getPersonaSummary', []))
       );
   }
 
