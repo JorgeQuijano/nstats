@@ -6,6 +6,7 @@ import { AboutComponent } from "../app/views/about/about.component";
 import { LoginComponent } from "../app/views/login/login.component";
 import { MatchComponent } from "../app/views/match/match.component";
 import { PersonaComponent } from "../app/views/persona/persona.component";
+import { TeamsComponent } from "../app/views/teams/teams.component";
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'persona', component: PersonaComponent },
   { path: 'stats', component: StatsComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'teams', component: TeamsComponent }
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ import { LoginComponent } from './views/login/login.component';
 import { HomeComponent } from './views/home/home.component';
 import { MatchComponent } from './views/match/match.component';
 import { PersonaComponent } from './views/persona/persona.component';
+import { TeamsComponent } from './views/teams/teams.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PersonaComponent } from './views/persona/persona.component';
     LoginComponent,
     HomeComponent,
     MatchComponent,
-    PersonaComponent
+    PersonaComponent,
+    TeamsComponent
   ],
   imports: [
     BrowserModule,
