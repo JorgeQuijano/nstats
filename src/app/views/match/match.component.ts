@@ -28,7 +28,6 @@ export class MatchComponent implements OnInit {
   sortState: string;
   uniqueArray = [];
   tableHeaders = [
-    {'header': 'MID', 'value': 'matchid'},
     {'header': 'Comp', 'value': 'compcode'},
     {'header': 'Season', 'value': 'seasonname'},
     {'header': 'Stage', 'value': 'stageshort'},
@@ -36,8 +35,6 @@ export class MatchComponent implements OnInit {
     {'header': 'HTeam', 'value': 't1shortname'},
     {'header': 'Result', 'value': 't1goalft'},
     {'header': 'ATeam', 'value': 't2shortname'},
-    {'header': 'Stadium', 'value': 'stadiumname'},
-    {'header': 'Neutral', 'value': 'neutral_match'},
     {'header': 'Details', 'value': 'details'}
   ];
 

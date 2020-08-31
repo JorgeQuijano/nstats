@@ -44,7 +44,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let x of temptableData">
-                <td>{{x.matchid}}</td>
                 <td>{{x.compcode}}</td>
                 <td>{{x.seasonname}}</td>
                 <td>{{x.stageshort}}</td>
@@ -52,8 +51,6 @@
                 <td>{{x.t1shortname}}</td>
                 <td>{{x.t1goalft}}-{{x.t2goalft}}</td>
                 <td>{{x.t2shortname}}</td>
-                <td>{{x.stadiumname}}</td>
-                <td><strong *ngIf=x.neutral_match>Yes</strong> </td>
                 <td>
                     <button (click)="matchDetails(x.matchid, 'matchDetailsModal')"><i class="material-icons regularIcon">info</i></button>
                 </td>
@@ -65,11 +62,13 @@
 <jw-modal id="matchDetailsModal">
     <div *ngIf="selectedMatchRaw" class="match-modal">
         <h4>Match Stats</h4>
+        <span>{{selectedMatchRaw.matchid}}</span>
+        <br>
         <span>{{selectedMatchRaw.seasonname}} | {{selectedMatchRaw.compname}} | {{selectedMatchRaw.fmatchdate}} - {{selectedMatchRaw.matchtime}} ( {{selectedMatchRaw.stageshort}} )</span>
 
         <br>
 
-        <span>{{selectedMatchRaw.stadiumname}} ({{selectedMatchRaw.stadiumcity}}) - Assistance: {{selectedMatchRaw.spectators}}</span>
+        <span>{{selectedMatchRaw.stadiumname}} <span *ngIf=selectedMatchRaw.neutral_match>ⁿ</span> ({{selectedMatchRaw.stadiumcity}}) - Assistance: {{selectedMatchRaw.spectators}}</span>
 
         <br>
         <br>
