@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from "../../_services/persona/persona.service";
+import { ActionService } from "../../_services/action/action.service";
 import { ModalService } from '../../_modal/modal.service';
+import { PagerService } from "../../_services/pagination/pager.service";
 
 @Component({
   selector: 'app-persona',
@@ -11,18 +13,21 @@ export class PersonaComponent implements OnInit {
 
   tableData = [];
   temptableData = [];
+
+  pager: any = {};
+  pagedItems: any[];
+  currentPage = 1;
+
   selectedPersonaID: number;
   selectedPersona: any;
+  personaSummary: any;
   sortState: string;
   tableHeaders = [
     {'header': 'PID', 'value': 'personaid'},
     {'header': 'First Name', 'value': 'firstname'},
     {'header': 'Last Name', 'value': 'lastname'},
-    {'header': 'Nationality', 'value': 'nationality'},
-    {'header': 'Citizenship', 'value': 'citizenship'},
-    {'header': 'Date of Birth (YMD)', 'value': 'fdob'},
-    {'header': 'Nickname', 'value': 'notes'},
-    {'header': 'Details', 'value': 'details'}
+    {'header': 'DOB', 'value': 'fdob'},
+    {'header': 'Stats', 'value': 'details'}
   ];
 
   filterOptions = [
@@ -32,7 +37,9 @@ export class PersonaComponent implements OnInit {
 
   constructor(
     private personaService: PersonaService,
-    private modalService: ModalService
+    private actionService: ActionService,
+    private modalService: ModalService,
+    private pagerService: PagerService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +52,7 @@ export class PersonaComponent implements OnInit {
       .subscribe(res => {
         this.tableData = res;
         this.temptableData = res;
+        this.setPage(this.currentPage);
       } );
   }
 
@@ -62,17 +70,31 @@ export class PersonaComponent implements OnInit {
       this.temptableData.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
       this.sortState = 'desc'
     }
-    
+    this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
+    this.setPage(this.pager.currentPage);
   }
 
-  personaDetails(mid:number, modalid:string):void {
-    this.personaService.getPersona(mid)
+  personaDetails(personaid:number, modalid:string):void {
+    this.personaService.getPersona(personaid)
       .subscribe(res => {
-        this.selectedPersona = res;
-        this.selectedPersonaID = mid;
-        this.modalService.open(modalid);
+        this.actionService.getPersonaSummary(personaid)
+          .subscribe(x=> {
+            this.personaSummary = x;
+            this.selectedPersona = res;
+            this.selectedPersonaID = personaid;
+            this.modalService.open(modalid);
+          })
+        
       } );    
   }
+
+  setPage(page: number) {
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.temptableData.length, page);
+
+    // get current page of items
+    this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
+}
 
   closeModal(id: string) {
     this.modalService.close(id);

@@ -5,7 +5,7 @@ import { config } from '../../config';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Match, MatchRaw, MatchActionCount } from "./match";
+import { Match, MatchRaw, MatchActionCount, OneColMatch } from "./match";
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
 const httpOptions = {
@@ -64,6 +64,13 @@ export class MatchService {
     return this.http.get<MatchRaw[]>(this.matchRawURL)
       .pipe(
         catchError(this.handleError('getMatches', []))
+      );
+  }
+
+  getSincleColumnMatches (teamid: number, limit: number): Observable<OneColMatch[]> {
+    return this.http.get<OneColMatch[]>(this.APIURL+`/singlecol/${teamid}/${limit}`)
+      .pipe(
+        catchError(this.handleError('getSincleColumnMatches', []))
       );
   }
 }

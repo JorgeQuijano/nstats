@@ -4,7 +4,7 @@ import { CompService } from "../../_services/comp/comp.service";
 import { SeasonService } from "../../_services/season/season.service";
 import { TeamService } from "../../_services/team/team.service";
 import { ActionService } from "../../_services/action/action.service";
-
+import { PagerService } from "../../_services/pagination/pager.service";
 import { ModalService } from '../../_modal/modal.service';
 
 @Component({
@@ -16,16 +16,23 @@ export class MatchComponent implements OnInit {
 
   tableData = [];
   temptableData = [];
+
+  pager: any = {};
+  pagedItems: any[];
+  currentPage = 1;
+
   selectedMatchID: number;
   selectedMatchRaw: any;
-  selectedMatchActions: any;
+  t1ActionsXI: any;
+  t1ActionsSub: any;
+  t2ActionsXI: any;
+  t2ActionsSub: any;
   comps = [];
   seasons = [];
   teams = [];
   sortState: string;
   uniqueArray = [];
   tableHeaders = [
-    {'header': 'MID', 'value': 'matchid'},
     {'header': 'Comp', 'value': 'compcode'},
     {'header': 'Season', 'value': 'seasonname'},
     {'header': 'Stage', 'value': 'stageshort'},
@@ -33,8 +40,6 @@ export class MatchComponent implements OnInit {
     {'header': 'HTeam', 'value': 't1shortname'},
     {'header': 'Result', 'value': 't1goalft'},
     {'header': 'ATeam', 'value': 't2shortname'},
-    {'header': 'Stadium', 'value': 'stadiumname'},
-    {'header': 'Neutral', 'value': 'neutral_match'},
     {'header': 'Details', 'value': 'details'}
   ];
 
@@ -49,7 +54,8 @@ export class MatchComponent implements OnInit {
     private seasonService: SeasonService,
     private teamService: TeamService,
     private modalService: ModalService,
-    private actionService: ActionService
+    private actionService: ActionService,
+    private pagerService: PagerService
   ) { }
 
   ngOnInit(): void {
@@ -63,6 +69,7 @@ export class MatchComponent implements OnInit {
       .subscribe(res => {
         this.tableData = res;
         this.temptableData = res;
+        this.setPage(this.currentPage);
       } );
   }
 
@@ -98,7 +105,8 @@ export class MatchComponent implements OnInit {
       this.temptableData.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
       this.sortState = 'desc'
     }
-    
+    this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
+    this.setPage(this.pager.currentPage);
   }
 
   filterTable(x:string, ft:string): void {
@@ -109,6 +117,8 @@ export class MatchComponent implements OnInit {
     } else {
       this.temptableData =  this.tableData.filter(row => row[ft] == x);
     }
+    this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
+    this.setPage(this.pager.currentPage);
   }
 
   matchDetails(mid:number, modalid:string):void {
@@ -116,13 +126,31 @@ export class MatchComponent implements OnInit {
       .subscribe(res => {
         this.actionService.getMatchActions(mid)
           .subscribe(x => {
-            this.selectedMatchActions = x;
-            this.selectedMatchRaw = res;
-            this.selectedMatchID = mid;
-            this.modalService.open(modalid);
+            this.actionService.getMatchActionsSummaryt1(mid)
+              .subscribe(xt1 => {
+                this.actionService.getMatchActionsSummaryt2(mid)
+                  .subscribe(xt2 => {
+                    this.t1ActionsSub = xt1.filter(x=> x.actionshort == 'Sub');
+                    this.t1ActionsXI = xt1.filter(x=> x.actionshort == 'SXI');
+                    this.t2ActionsXI = xt2.filter(x=> x.actionshort == 'SXI');
+                    this.t2ActionsSub = xt2.filter(x=> x.actionshort == 'Sub');
+                    this.selectedMatchRaw = res;
+                    this.selectedMatchID = mid;
+                    this.modalService.open(modalid);
+                  })
+              })
+            
           });
       } );    
   }
+
+  setPage(page: number) {
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.temptableData.length, page);
+
+    // get current page of items
+    this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
+}
 
   closeModal(id: string) {
     this.modalService.close(id);

@@ -1,13 +1,3 @@
-button{
-    color: green;
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    border-radius: 4px;
-}
-
 /* Match Table */
 
 .mtable {
@@ -23,10 +13,10 @@ button{
   }
 
 .mtable th {
-border: 1px solid grey;
-text-align: center;
-font-weight: bold;
-background-color: #006633;
+    border: 1px solid grey;
+    text-align: center;
+    font-weight: bold;
+    background-color: #006633;
 }
 
 .mtable tr:nth-child(even){background-color: #282828;}
@@ -51,16 +41,71 @@ text-align: center;
 font-weight: bold;
 }
 
+.pagination {
+    padding: 14px 16px;
+    display: inline-flex;
+}
+
+.pages {
+    color: white;
+    font-size: 16px;
+    background-color: #202020;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.pages.active {
+    color: #00cc00;
+    font-size: 16px;
+    background-color: #404040;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.pages.disabled {
+    color: grey;
+    font-size: 16px;
+    background-color: Transparent;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 /* Modal */
 
 .match-modal {
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .modal-button {
     color: white;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
     background-color: grey;
+    border-radius: 4px;
+}
+
+.md-button {
+    color: green;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border-radius: 4px;
 }
 
 .dropdwn {
@@ -85,4 +130,42 @@ font-weight: bold;
 
 .resultft {
     font-weight: bold;
+}
+
+.actionsTables {
+    display: flex;
+}
+
+/* Icons Colors */
+
+.regularIcon {
+    font-size: 18px;
+}
+
+.actionTime {
+    font-size: 12px;
+}
+
+.gicon {
+    font-size: 16px;
+    color: green;
+    font-weight: bold;
+}
+
+.yicon {
+    font-size: 16px;
+    color: #fada5e;
+    font-weight: bold;
+}
+
+.ricon {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+}
+
+.material-icons{
+    display: inline-flex;
+    vertical-align: top;
+    vertical-align: bottom;
 }

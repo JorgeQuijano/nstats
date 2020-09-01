@@ -92,3 +92,52 @@ export interface MatchActionCount {
   matchid: number;
   actionshort: string;
 }
+
+export interface OneColMatch {
+  matchid: number;
+  season: number;
+  comp: number;
+  matchdate: string;
+  matchtime: string;
+  teamid: number;
+  againstid: number;
+  goalft: number;
+  xgoalft: number;
+  goalht: number;
+  xgoalht: number;
+  shots: number;
+  xshots: number;
+  shotsot: number;
+  xshotsot: number;
+  fouls: number;
+  xfouls: number;
+  corners: number;
+  xcorners: number;
+  yellow: number;
+  xyellow: number;
+  red: number;
+  xred: number;
+  // should be possesion lol
+  possition: number; 
+  xpossition: number;
+  spectators: number;
+  stadium: number;
+  neutral_match: boolean;
+  stage: number;
+  team: string;
+  teamcode: string;
+  against: string;
+  againstcode: string;
+  stadiumname: string;
+  stadiumcity: string;
+  stadiumcountry: string;
+  compname: string;
+  compcode: string;
+  seasonname: string;
+  season_id: number;
+  stageshort: string;
+  side: string;
+  resultft: string;
+  resultht: string;
+  fmatchdate: string;
+}

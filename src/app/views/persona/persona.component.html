@@ -1,4 +1,4 @@
-<h3>Persona</h3>
+<h3>Personas</h3>
 
 
 <!-- Personas Table -->
@@ -14,20 +14,36 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let x of temptableData">
+            <tr *ngFor="let x of pagedItems">
                 <td>{{x.personaid}}</td>
                 <td>{{x.firstname}}</td>
                 <td>{{x.lastname}}</td>
-                <td>{{x.nationality}}</td>
-                <td>{{x.citizenship}}</td>
                 <td>{{x.fdob}}</td>
-                <td>{{x.notes}}</td>
                 <td>
-                    <button (click)="personaDetails(x.personaid, 'personaDetailsModal')">🛈</button>
+                    <button (click)="personaDetails(x.personaid, 'personaDetailsModal')" class="md-button"><i class="material-icons regularIcon">info</i></button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <!-- pager -->
+    <div *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <button [ngClass]="{disabled:pager.currentPage === 1}" class="pages">
+            <span (click)="setPage(1)"><i class="material-icons">first_page</i></span>
+        </button>
+        <button [ngClass]="{disabled:pager.currentPage === 1}" class="pages">
+            <span (click)="setPage(pager.currentPage - 1)"><i class="material-icons">keyboard_arrow_left</i></span>
+        </button>
+        <button *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="pages">
+            <span (click)="setPage(page)">{{page}}</span>
+        </button>
+        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="pages">
+            <span (click)="setPage(pager.currentPage + 1)"><i class="material-icons">keyboard_arrow_right</i></span>
+        </button>
+        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="pages">
+            <span (click)="setPage(pager.totalPages)"><i class="material-icons">last_page</i></span>
+        </button>
+    </div>
 </div>
 
 <jw-modal id="personaDetailsModal">
@@ -38,6 +54,70 @@
         <span>{{selectedPersona.fdob}}</span>
         <br>
         <span *ngIf="selectedPersona.notes != ''">{{selectedPersona.notes}}</span>
+        <br>
+        <table *ngIf="personaSummary.length > 0" class="pstable">
+            <tr>
+                <th></th>
+                <th></th>
+                <!-- Played -->
+                <th></th>
+                <!-- Bench -->
+                <th><i class="material-icons regularIcon">airline_seat_recline_normal</i></th>
+                <!-- Goals --> 
+                <th><i class="material-icons gicon">sports_soccer</i></th>
+                <!-- Assists -->
+                <th><i class="material-icons regularIcon">connect_without_contact</i></th>
+                <!-- Yellow Cards -->
+                <th><i class="material-icons yicon">style</i></th>
+                <!-- Red Cards -->
+                <th><i class="material-icons ricon">style</i></th>
+                <!-- Missed Penalties -->
+                <th></th>
+                <!-- Penalties Saved -->
+                <th><i class="material-icons regularIcon">sports_handball</i></th>
+                <!-- Own Goals -->
+                <th><i class="material-icons ricon">sports_soccer</i></th>
+                <!-- Hits the post -->
+                <th></th>
+                <!-- Penalties Conceded -->
+                <th><i class="material-icons regularIcon">sports_kabaddi</i></th>
+                <!-- Manager/DT/Coach -->
+                <th><i class="material-icons regularIcon">support_agent</i></th>
+            </tr>
+            <tr>
+                <th>Season</th>
+                <th>Comp</th>
+                <th>SXI</th>
+                <th>Sub</th>
+                <th>G</th>
+                <th>A</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Miss P</th>
+                <th>Svd Pen</th>
+                <th>OG</th>
+                <th>Post</th>
+                <th>Pen Con</th>
+                <th>Mgr</th>
+            </tr>
+            <tr *ngFor="let x of personaSummary">
+                <td>{{x.season}}</td>
+                <td>{{x.compcode}}</td>
+                <td>{{x.sxi}}</td>
+                <td>{{x.sub}}</td>
+                <td>{{x.g}}</td>
+                <td>{{x.a}}</td>
+                <td>{{x.y}}</td>
+                <td>{{x.r}}</td>
+                <td>{{x.mp}}</td>
+                <td>{{x.ps}}</td>
+                <td>{{x.og}}</td>
+                <td>{{x.p}}</td>
+                <td>{{x.pc}}</td>
+                <td>{{x.m}}</td>
+            </tr>
+        </table>
+        <span *ngIf="personaSummary.length == 0">No data found for this persona.</span>
         <br>
         <button class="modal-button" (click)="closeModal('personaDetailsModal');">Close</button>
     </div>
