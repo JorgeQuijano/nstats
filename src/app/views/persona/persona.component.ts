@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PersonaService } from "../../_services/persona/persona.service";
 import { ActionService } from "../../_services/action/action.service";
 import { ModalService } from '../../_modal/modal.service';
+import { PagerService } from "../../_services/pagination/pager.service";
 
 @Component({
   selector: 'app-persona',
@@ -12,6 +13,11 @@ export class PersonaComponent implements OnInit {
 
   tableData = [];
   temptableData = [];
+
+  pager: any = {};
+  pagedItems: any[];
+  currentPage = 1;
+
   selectedPersonaID: number;
   selectedPersona: any;
   personaSummary: any;
@@ -32,7 +38,8 @@ export class PersonaComponent implements OnInit {
   constructor(
     private personaService: PersonaService,
     private actionService: ActionService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private pagerService: PagerService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +52,7 @@ export class PersonaComponent implements OnInit {
       .subscribe(res => {
         this.tableData = res;
         this.temptableData = res;
+        this.setPage(this.currentPage);
       } );
   }
 
@@ -62,7 +70,8 @@ export class PersonaComponent implements OnInit {
       this.temptableData.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
       this.sortState = 'desc'
     }
-    
+    this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
+    this.setPage(this.pager.currentPage);
   }
 
   personaDetails(personaid:number, modalid:string):void {
@@ -78,6 +87,15 @@ export class PersonaComponent implements OnInit {
         
       } );    
   }
+
+  setPage(page: number) {
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.temptableData.length, page);
+
+    // get current page of items
+    this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    console.log(this.pagedItems);
+}
 
   closeModal(id: string) {
     this.modalService.close(id);

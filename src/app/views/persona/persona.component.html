@@ -14,17 +14,36 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let x of temptableData">
+            <tr *ngFor="let x of pagedItems">
                 <td>{{x.personaid}}</td>
                 <td>{{x.firstname}}</td>
                 <td>{{x.lastname}}</td>
                 <td>{{x.fdob}}</td>
                 <td>
-                    <button (click)="personaDetails(x.personaid, 'personaDetailsModal')"><i class="material-icons regularIcon">info</i></button>
+                    <button (click)="personaDetails(x.personaid, 'personaDetailsModal')" class="md-button"><i class="material-icons regularIcon">info</i></button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <!-- pager -->
+    <div *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <button [ngClass]="{disabled:pager.currentPage === 1}" class="pages">
+            <a (click)="setPage(1)"><i class="material-icons">first_page</i></a>
+        </button>
+        <button [ngClass]="{disabled:pager.currentPage === 1}" class="pages">
+            <a (click)="setPage(pager.currentPage - 1)"><i class="material-icons">keyboard_arrow_left</i></a>
+        </button>
+        <button *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="pages">
+            <a (click)="setPage(page)">{{page}}</a>
+        </button>
+        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="pages">
+            <a (click)="setPage(pager.currentPage + 1)"><i class="material-icons">keyboard_arrow_right</i></a>
+        </button>
+        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="pages">
+            <a (click)="setPage(pager.totalPages)"><i class="material-icons">last_page</i></a>
+        </button>
+    </div>
 </div>
 
 <jw-modal id="personaDetailsModal">
