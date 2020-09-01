@@ -33,6 +33,47 @@ button{
 
 .ttable tr:hover {background-color: grey;}
 
+.pagination {
+    padding: 14px 16px;
+    display: inline-flex;
+}
+
+.pages {
+    color: white;
+    font-size: 16px;
+    background-color: #202020;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.pages.active {
+    color: #00cc00;
+    font-size: 16px;
+    background-color: #404040;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.pages.disabled {
+    color: grey;
+    font-size: 16px;
+    background-color: Transparent;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 /* Modal */
 
 .match-modal {

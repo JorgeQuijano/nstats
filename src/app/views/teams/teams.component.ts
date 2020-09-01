@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from "../../_services/team/team.service";
 import { ModalService } from '../../_modal/modal.service';
 import { MatchService } from "../../_services/match/match.service";
-
+import { PagerService } from "../../_services/pagination/pager.service";
 import { Team } from "../../_services/team/team";
 
 @Component({
@@ -11,6 +11,10 @@ import { Team } from "../../_services/team/team";
   styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent implements OnInit {
+
+  pager: any = {};
+  pagedItems: any[];
+  currentPage = 1;
 
   matchLimit = 15;
   teams: any;
@@ -41,7 +45,8 @@ export class TeamsComponent implements OnInit {
   constructor(
     private teamService: TeamService,
     private modalService: ModalService,
-    private matchService: MatchService
+    private matchService: MatchService,
+    private pagerService: PagerService
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +57,7 @@ export class TeamsComponent implements OnInit {
     this.teamService.getTeams()
       .subscribe(x=>{
         this.teams = x;
+        this.setPage(this.currentPage);
       })
   }
 
@@ -65,6 +71,14 @@ export class TeamsComponent implements OnInit {
         this.modalService.open(modalid);
       })
     
+  }
+
+  setPage(page: number) {
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.teams.length, page);
+
+    // get current page of items
+    this.pagedItems = this.teams.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
   closeModal(id: string) {

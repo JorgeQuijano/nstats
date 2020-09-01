@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from "../../_services/match/match.service";
-import { CompService } from "../../_services/comp/comp.service";
 import { SeasonService } from "../../_services/season/season.service";
 import { TeamService } from "../../_services/team/team.service";
 import { ActionService } from "../../_services/action/action.service";
@@ -29,7 +28,8 @@ export class MatchComponent implements OnInit {
   t2ActionsSub: any;
   comps = [];
   seasons = [];
-  teams = [];
+  uTeams = [];
+  uniqueFilter = [];
   sortState: string;
   uniqueArray = [];
   tableHeaders = [
@@ -37,9 +37,9 @@ export class MatchComponent implements OnInit {
     {'header': 'Season', 'value': 'seasonname'},
     {'header': 'Stage', 'value': 'stageshort'},
     {'header': 'Date', 'value': 'fmatchdate'},
-    {'header': 'HTeam', 'value': 't1shortname'},
+    {'header': 'T1', 'value': 't1shortname'},
     {'header': 'Result', 'value': 't1goalft'},
-    {'header': 'ATeam', 'value': 't2shortname'},
+    {'header': 'T2', 'value': 't2shortname'},
     {'header': 'Details', 'value': 'details'}
   ];
 
@@ -50,7 +50,6 @@ export class MatchComponent implements OnInit {
 
   constructor(
     private matchService: MatchService,
-    private compService: CompService,
     private seasonService: SeasonService,
     private teamService: TeamService,
     private modalService: ModalService,
@@ -60,9 +59,6 @@ export class MatchComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMatches();
-    this.getComps();
-    this.getSeasons();
-    this.getTeams();
   }
   getMatches(): void {
     this.matchService.getMatchesRaw()
@@ -70,27 +66,10 @@ export class MatchComponent implements OnInit {
         this.tableData = res;
         this.temptableData = res;
         this.setPage(this.currentPage);
-      } );
-  }
-
-  getComps(): void {
-    this.compService.getComps()
-      .subscribe(res => {
-        this.comps = res;
-      } );
-  }
-
-  getSeasons(): void {
-    this.seasonService.getSeasons()
-      .subscribe(res => {
-        this.seasons = res;
-      } );
-  }
-
-  getTeams(): void {
-    this.teamService.getTeams()
-      .subscribe(res => {
-        this.teams = res;
+        this.comps = this.findUnique(res, d => d.compcode);
+        this.seasons = this.findUnique(res, d => d.season);
+        this.uTeams = this.findUnique(res, d => d.t1 || d.t2);
+        console.log(this.findUnique(res, d => d.t1 || d.t2));
       } );
   }
 
@@ -109,13 +88,13 @@ export class MatchComponent implements OnInit {
     this.setPage(this.pager.currentPage);
   }
 
-  filterTable(x:string, ft:string): void {
-    if (x == 'all') {
+  filterTable(xvalue:string, xcolumn:string): void {
+    if (xvalue == 'all') {
       this.temptableData = this.tableData;
-    } else if (ft == 'team' && x !== 'all') {
-      this.temptableData =  this.tableData.filter(row => row.t1 == x || row.t2 == x);
+    } else if (xcolumn == 'team' && xvalue !== 'all') {
+      this.temptableData =  this.tableData.filter(row => row.t1 == xvalue || row.t2 == xvalue);
     } else {
-      this.temptableData =  this.tableData.filter(row => row[ft] == x);
+      this.temptableData =  this.tableData.filter(row => row[xcolumn] == xvalue);
     }
     this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
     this.setPage(this.pager.currentPage);
@@ -144,13 +123,21 @@ export class MatchComponent implements OnInit {
       } );    
   }
 
-  setPage(page: number) {
+  setPage(page: number) { 
     // get pager object from service
     this.pager = this.pagerService.getPager(this.temptableData.length, page);
 
     // get current page of items
     this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
-}
+  }
+
+  findUnique(arr, predicate) {
+    var found = {};
+    arr.forEach(d => {
+      found[predicate(d)] = d;
+    });
+    return Object.keys(found).map(key => found[key]); 
+  }
 
   closeModal(id: string) {
     this.modalService.close(id);

@@ -3,7 +3,7 @@
     <label for="comps">Comp: </label>
     <select #comp name="comps" class="alignFilters" (change)="filterTable(comp.value, 'comp')">
         <option value="all">All</option>
-        <option *ngFor= "let x of comps" [value]="x.compid">
+        <option *ngFor= "let x of comps" [value]="x.comp">
             {{x.compcode}}
         </option>
     </select>
@@ -11,16 +11,16 @@
     <label for="seasons"> Season: </label>
     <select #season name="seasons" class="alignFilters" (change)="filterTable(season.value, 'season')">
         <option value="all">All</option>
-        <option *ngFor= "let x of seasons" [value]="x.seasonid">
-            {{x.season}}
+        <option *ngFor= "let x of seasons" [value]="x.season">
+            {{x.seasonname}}
         </option>
     </select>
 
     <label for="teams"> Team: </label>
     <select #team name="teams" class="alignFilters" (change)="filterTable(team.value, 'team')">
         <option value="all">All</option>
-        <option *ngFor= "let x of teams" [value]="x.teamid">
-            {{x.teamshortname}}
+        <option *ngFor= "let x of uTeams" [value]="x.t1">
+            {{x.t1shortname}}
         </option>
     </select>
 </div>

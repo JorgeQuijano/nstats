@@ -6,7 +6,7 @@
             {{x.header}}
         </th>
     </tr>
-    <tr *ngFor="let x of teams">
+    <tr *ngFor="let x of pagedItems">
         <td>{{x.teamid}}</td>
         <td>{{x.teamshortname}}</td>
         <td>{{x.country}}</td>
@@ -17,6 +17,25 @@
         </td>
     </tr>
 </table>
+
+<!-- pager -->
+<div *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <button [ngClass]="{disabled:pager.currentPage === 1}" class="pages">
+        <span (click)="setPage(1)"><i class="material-icons">first_page</i></span>
+    </button>
+    <button [ngClass]="{disabled:pager.currentPage === 1}" class="pages">
+        <span (click)="setPage(pager.currentPage - 1)"><i class="material-icons">keyboard_arrow_left</i></span>
+    </button>
+    <button *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="pages">
+        <span (click)="setPage(page)">{{page}}</span>
+    </button>
+    <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="pages">
+        <span (click)="setPage(pager.currentPage + 1)"><i class="material-icons">keyboard_arrow_right</i></span>
+    </button>
+    <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="pages">
+        <span (click)="setPage(pager.totalPages)"><i class="material-icons">last_page</i></span>
+    </button>
+</div>
 
 <jw-modal id="teamDetailsModal">
     <div *ngIf="selectedTeam" class="match-modal">
