@@ -43,8 +43,6 @@ export class HomeComponent implements OnInit {
     this.matchService.getMatchRawL7()
       .subscribe(res => {
         this.matches = res;
-        console.log(res);
-        console.log(this.tableHeaders);
       })
   }
 
