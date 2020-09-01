@@ -50,8 +50,6 @@ export class MatchComponent implements OnInit {
 
   constructor(
     private matchService: MatchService,
-    private seasonService: SeasonService,
-    private teamService: TeamService,
     private modalService: ModalService,
     private actionService: ActionService,
     private pagerService: PagerService
@@ -60,6 +58,7 @@ export class MatchComponent implements OnInit {
   ngOnInit(): void {
     this.getMatches();
   }
+
   getMatches(): void {
     this.matchService.getMatchesRaw()
       .subscribe(res => {
@@ -93,7 +92,6 @@ export class MatchComponent implements OnInit {
     } else {
       this.temptableData =  this.tableData.filter(row => row[xcolumn] == xvalue);
     }
-    this.getFilters(this.temptableData);
     this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
     this.setPage(this.pager.currentPage);
   }

@@ -1,0 +1,129 @@
+/* Match Table */
+
+.mtable {
+    border-collapse: collapse;
+    border: 1px solid grey;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mtable td {
+    border: 1px solid grey;
+    text-align: center;
+  }
+
+.mtable th {
+    border: 1px solid grey;
+    text-align: center;
+    font-weight: bold;
+    background-color: #006633;
+}
+
+.mtable tr:nth-child(even){background-color: #282828;}
+
+.mtable tr:hover {background-color: grey;}
+
+/* Match Details Table */
+
+.mdtable {
+    /* border-collapse: collapse; */
+    text-align: center;
+    margin: auto;
+}
+
+.mdtable td {
+    text-align: center;
+  }
+
+.mdtable th {
+text-align: center;
+font-weight: bold;
+}
+
+/* Modal */
+
+.match-modal {
+    text-align: center;
+    color: white;
+}
+
+.modal-button {
+    color: white;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    background-color: grey;
+    border-radius: 4px;
+}
+
+.md-button {
+    color: green;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.dropdwn {
+    vertical-align: middle;
+    font-size: 10px;
+    float: right;
+    background-color: #DCDCDC;
+    border-radius: 4px;
+}
+
+.tableFilters {
+    text-align:center;
+}
+
+.alignFilters {
+    display:inline-block;
+}
+
+.teamName {
+    font-weight: bold;
+}
+
+.resultft {
+    font-weight: bold;
+}
+
+.actionsTables {
+    display: flex;
+}
+
+/* Icons Colors */
+
+.regularIcon {
+    font-size: 18px;
+}
+
+.actionTime {
+    font-size: 12px;
+}
+
+.gicon {
+    font-size: 16px;
+    color: green;
+    font-weight: bold;
+}
+
+.yicon {
+    font-size: 16px;
+    color: #fada5e;
+    font-weight: bold;
+}
+
+.ricon {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+}
+
+.material-icons{
+    display: inline-flex;
+    vertical-align: top;
+    vertical-align: bottom;
+}

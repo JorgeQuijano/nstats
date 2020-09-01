@@ -52,6 +52,13 @@ export class MatchService {
       );
   }
 
+  getMatchRawL7 (): Observable<MatchRaw[]> {
+    return this.http.get<MatchRaw[]>(this.matchRawURL+`/days`)
+      .pipe(
+        catchError(this.handleError('getLXMatchRaw', []))
+      );
+  }
+
   getMatchActionCount (matchid: number): Observable<MatchActionCount[]> {
     return this.http.get<MatchActionCount[]>(this.matchActionCountURL+`/${matchid}`)
       .pipe(
