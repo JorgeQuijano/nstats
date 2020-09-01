@@ -20,10 +20,7 @@ export class PersonaComponent implements OnInit {
     {'header': 'PID', 'value': 'personaid'},
     {'header': 'First Name', 'value': 'firstname'},
     {'header': 'Last Name', 'value': 'lastname'},
-    {'header': 'Nationality', 'value': 'nationality'},
-    {'header': 'Citizenship', 'value': 'citizenship'},
-    {'header': 'Date of Birth (YMD)', 'value': 'fdob'},
-    {'header': 'Nickname', 'value': 'notes'},
+    {'header': 'DOB (YMD)', 'value': 'fdob'},
     {'header': 'Details', 'value': 'details'}
   ];
 

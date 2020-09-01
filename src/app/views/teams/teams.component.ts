@@ -20,9 +20,6 @@ export class TeamsComponent implements OnInit {
     {'header': 'TID', 'value': 'teamid'},
     {'header': 'Team', 'value': 'teamshortname'},
     {'header': 'Country', 'value': 'country'},
-    {'header': 'City', 'value': 'city'},
-    {'header': 'Assoc', 'value': 'association'},
-    {'header': 'Conf', 'value': 'confederation'},
     {'header': 'Details', 'value': 'details'}
   ];
 
