@@ -66,10 +66,7 @@ export class MatchComponent implements OnInit {
         this.tableData = res;
         this.temptableData = res;
         this.setPage(this.currentPage);
-        this.comps = this.findUnique(res, d => d.compcode);
-        this.seasons = this.findUnique(res, d => d.season);
-        this.uTeams = this.findUnique(res, d => d.t1 || d.t2);
-        console.log(this.findUnique(res, d => d.t1 || d.t2));
+        this.getFilters(res);
       } );
   }
 
@@ -96,6 +93,7 @@ export class MatchComponent implements OnInit {
     } else {
       this.temptableData =  this.tableData.filter(row => row[xcolumn] == xvalue);
     }
+    this.getFilters(this.temptableData);
     this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
     this.setPage(this.pager.currentPage);
   }
@@ -129,6 +127,15 @@ export class MatchComponent implements OnInit {
 
     // get current page of items
     this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  }
+
+  getFilters(x:any):void {
+    this.comps = this.findUnique(x, d => d.compcode);
+    this.comps.sort((a, b) => a.compcode < b.compcode ? -1 : a.compcode > b.compcode ? 1 : 0);
+    this.seasons = this.findUnique(x, d => d.season);
+    this.seasons.sort((a, b) => a.seasonname < b.seasonname ? 1 : a.seasonname > b.seasonname ? -1 : 0);
+    this.uTeams = this.findUnique(x, d => d.t1 || d.t2);
+    this.uTeams.sort((a, b) => a.t1shortname < b.t1shortname ? -1 : a.t1shortname > b.t1shortname ? 1 : 0);
   }
 
   findUnique(arr, predicate) {
