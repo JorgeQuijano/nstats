@@ -40,8 +40,9 @@
         <h4>Match Stats</h4>
         <span>{{selectedMatchRaw.matchid}}</span>
         <br>
-        <span>{{selectedMatchRaw.seasonname}} | {{selectedMatchRaw.compname}} | {{selectedMatchRaw.fmatchdate}} - {{selectedMatchRaw.matchtime}} ( {{selectedMatchRaw.stageshort}} )</span>
-
+        <span>{{selectedMatchRaw.seasonname}} | {{selectedMatchRaw.compname}} | {{selectedMatchRaw.fmatchdate}} - {{selectedMatchRaw.matchtime}}</span>
+        <br>
+        <span>{{selectedMatchRaw.stage}}</span>
         <br>
 
         <span>{{selectedMatchRaw.stadiumname}} <span *ngIf=selectedMatchRaw.neutral_match>ⁿ</span> ({{selectedMatchRaw.stadiumcity}}) - Assistance: {{selectedMatchRaw.spectators}}</span>

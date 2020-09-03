@@ -82,6 +82,7 @@ export interface MatchRaw {
   compcode: string;
   seasonname: string;
   stageshort: string;
+  stage: string;
   stageid: number;
   neutral_match: boolean;
 }
