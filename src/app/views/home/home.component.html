@@ -56,42 +56,52 @@
                 <th>{{selectedMatchRaw.t1goalft}} - {{selectedMatchRaw.t2goalft}}</th>
                 <th>{{selectedMatchRaw.t2code}}</th>
             </tr>
-            <tr>
-                <td></td>
-                <td>({{selectedMatchRaw.t1goalht}}-{{selectedMatchRaw.t2goalht}})</td>
-                <td></td>
+            <tr *ngIf="selectedMatchRaw.t1goalht !== null">
+                <td>{{selectedMatchRaw.t1goalht}}</td>
+                <td>HT Goals</td>
+                <td>{{selectedMatchRaw.t2goalht}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="selectedMatchRaw.ot">
+                <td>{{selectedMatchRaw.t1goals_ot}}</td>
+                <td>OT Goals*</td>
+                <td>{{selectedMatchRaw.t2goals_ot}}</td>
+            </tr>
+            <tr *ngIf="selectedMatchRaw.shoot_out">
+                <td>{{selectedMatchRaw.t1goals_so}}</td>
+                <td>Pen Shoot-out*</td>
+                <td>{{selectedMatchRaw.t2goals_so}}</td>
+            </tr>
+            <tr *ngIf="selectedMatchRaw.t1y !== null">
                 <td>{{selectedMatchRaw.t1y}}</td>
                 <td>Yellow Cards</td>
                 <td>{{selectedMatchRaw.t2y}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="selectedMatchRaw.t1r !== null">
                 <td>{{selectedMatchRaw.t1r}}</td>
                 <td>Red Cards</td>
                 <td>{{selectedMatchRaw.t2r}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="selectedMatchRaw.t1shots !== null">
                 <td>{{selectedMatchRaw.t1shots}}</td>
                 <td>Shots</td>
                 <td>{{selectedMatchRaw.t2shots}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="selectedMatchRaw.t1shotsot !== null">
                 <td>{{selectedMatchRaw.t1shotsot}}</td>
                 <td>Shots On Target</td>
                 <td>{{selectedMatchRaw.t2shotsot}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="selectedMatchRaw.t1corners !== null">
                 <td>{{selectedMatchRaw.t1corners}}</td>
                 <td>Corners</td>
                 <td>{{selectedMatchRaw.t2corners}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="selectedMatchRaw.t1fouls !== null">
                 <td>{{selectedMatchRaw.t1fouls}}</td>
                 <td>Fouls</td>
                 <td>{{selectedMatchRaw.t2fouls}}</td>
             </tr>
-            <tr>
+            <tr *ngIf="selectedMatchRaw.t1poss !== null">
                 <td>{{selectedMatchRaw.t1poss}}</td>
                 <td>Possession %</td>
                 <td>{{selectedMatchRaw.t2poss}}</td>

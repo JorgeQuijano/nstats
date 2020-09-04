@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from "../../_services/match/match.service";
-import { SeasonService } from "../../_services/season/season.service";
-import { TeamService } from "../../_services/team/team.service";
 import { ActionService } from "../../_services/action/action.service";
 import { PagerService } from "../../_services/pagination/pager.service";
 import { ModalService } from '../../_modal/modal.service';
+
+import { MatchRaw } from "../../_services/match/match";
 
 @Component({
   selector: 'app-match',

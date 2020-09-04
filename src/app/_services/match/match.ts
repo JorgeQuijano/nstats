@@ -85,6 +85,21 @@ export interface MatchRaw {
   stage: string;
   stageid: number;
   neutral_match: boolean;
+  ot: boolean;
+  t1goals_ot: number;
+  t2goals_ot: number;
+  shoot_out: boolean;
+  t1goals_so: number;
+  t2goals_so: number;
+  ref1: number;
+  ref2: number;
+  ref3: number;
+  ref4: number;
+  varref1: number;
+  varref2: number;
+  varref3: number;
+  varref4: number;
+  replay: boolean;
 }
 
 export interface MatchActionCount {
