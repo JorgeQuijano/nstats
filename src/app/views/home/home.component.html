@@ -1,6 +1,6 @@
 <h1>FussData</h1>
 <span>
-    Recent Matches:
+    Recent Matches
 </span>
 <br>
 <br>
@@ -40,13 +40,14 @@
         <h4>Match Stats</h4>
         <span>{{selectedMatchRaw.matchid}}</span>
         <br>
-        <span>{{selectedMatchRaw.seasonname}} | {{selectedMatchRaw.compname}} | {{selectedMatchRaw.fmatchdate}} - {{selectedMatchRaw.matchtime}}</span>
+        <span>{{selectedMatchRaw.seasonname}} | {{selectedMatchRaw.compname}} | {{selectedMatchRaw.fmatchdate}} | {{selectedMatchRaw.matchtime}}</span>
         <br>
         <span>{{selectedMatchRaw.stage}}</span>
         <br>
 
-        <span>{{selectedMatchRaw.stadiumname}} <span *ngIf=selectedMatchRaw.neutral_match>ⁿ</span> ({{selectedMatchRaw.stadiumcity}}) - Assistance: {{selectedMatchRaw.spectators}}</span>
-
+        <span>{{selectedMatchRaw.stadiumname}} <span *ngIf=selectedMatchRaw.neutral_match>ⁿ</span>, {{selectedMatchRaw.stadiumcity}}, {{selectedMatchRaw.stadiumcountry}}.</span>
+        <br>
+        <span>Assistance: {{selectedMatchRaw.spectators}}</span>
         <br>
         <br>
 

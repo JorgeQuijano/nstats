@@ -58,15 +58,12 @@ export class PersonaComponent implements OnInit {
 
   sortTable(x:string): void {
     if (this.sortState == undefined) {
-      console.log(this.sortState);
       this.temptableData.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
       this.sortState = 'asc'
     } else if (this.sortState == 'desc'){
-      console.log(this.sortState);
       this.temptableData.sort((a, b) => a[x] < b[x] ? 1 : a[x] > b[x] ? -1 : 0);
       this.sortState = 'asc'
     } else if (this.sortState == 'asc'){
-      console.log(this.sortState);
       this.temptableData.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
       this.sortState = 'desc'
     }
