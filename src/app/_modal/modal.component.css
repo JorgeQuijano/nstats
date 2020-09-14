@@ -26,10 +26,24 @@ jw-modal .jw-modal .jw-modal-body {
   background: #484848;
   /* margin exposes part of the modal background */
   margin: auto;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   width: fit-content;
   border-radius: 4px;
+}
+
+@media screen and (min-width: 800px) {
+  jw-modal .jw-modal .jw-modal-body {
+    padding: 20px;
+    /* background-image: linear-gradient(0deg, #333 0%, #004925 100%); */
+    background: #484848;
+    /* margin exposes part of the modal background */
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: fit-content;
+    border-radius: 4px;
+  }
 }
 jw-modal .jw-modal-background {
   /* modal background fixed across whole screen */
