@@ -1,4 +1,4 @@
-/* Match Table */
+/* Match Table - Mobile First*/
 
 .mtable {
     width: 100%;
@@ -6,7 +6,28 @@
     border: 1px solid grey;
     margin-left: auto;
     margin-right: auto;
+    font-size: 14px;
 }
+
+.mtable td {
+    border: 1px solid grey;
+    text-align: center;
+    font-size: 14px;
+  }
+
+.mtable th {
+    border: 1px solid grey;
+    text-align: center;
+    font-weight: bold;
+    background-color: #006633;
+    font-size: 14px;
+}
+
+.mtable tr:nth-child(even){background-color: #282828;}
+
+.mtable tr:hover {background-color: grey;}
+
+/* Match Table - Big Screens */
 
 @media screen and (min-width: 800px) {
     .mtable {
@@ -15,24 +36,23 @@
         border: 1px solid grey;
         margin-left: auto;
         margin-right: auto;
+        font-size: 16px;
+    }
+
+    .mtable td {
+        border: 1px solid grey;
+        text-align: center;
+        font-size: 16px;
+      }
+    
+    .mtable th {
+        border: 1px solid grey;
+        text-align: center;
+        font-weight: bold;
+        background-color: #006633;
+        font-size: 16px;
     }
 }
-
-.mtable td {
-    border: 1px solid grey;
-    text-align: center;
-  }
-
-.mtable th {
-    border: 1px solid grey;
-    text-align: center;
-    font-weight: bold;
-    background-color: #006633;
-}
-
-.mtable tr:nth-child(even){background-color: #282828;}
-
-.mtable tr:hover {background-color: grey;}
 
 /* Match Details Table */
 

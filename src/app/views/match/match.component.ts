@@ -36,9 +36,9 @@ export class MatchComponent implements OnInit {
     {'header': 'Comp', 'value': 'compcode'},
     // {'header': 'Season', 'value': 'seasonname'},
     // {'header': 'Stage', 'value': 'stageshort'},
-    {'header': 'Date', 'value': 'fmatchdate'},
+    {'header': 'Date', 'value': 'matchdate'},
     {'header': 'T1', 'value': 't1shortname'},
-    {'header': 'Result', 'value': 't1goalft'},
+    {'header': 'FT', 'value': 't1goalft'},
     {'header': 'T2', 'value': 't2shortname'},
     // {'header': 'Details', 'value': 'details'}
   ];
