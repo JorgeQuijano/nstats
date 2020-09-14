@@ -6,15 +6,15 @@
             {{x.header}}
         </th>
     </tr>
-    <tr *ngFor="let x of pagedItems">
-        <td>{{x.teamid}}</td>
+    <tr *ngFor="let x of pagedItems" (click)="teamDetails(x, 'teamDetailsModal')">
+        <!-- <td>{{x.teamid}}</td> -->
         <td>{{x.teamshortname}}</td>
         <td>{{x.country}}</td>
-        <td>
+        <!-- <td>
             <button (click)="teamDetails(x, 'teamDetailsModal')">
                 <i class="material-icons regularIcon">info</i>
             </button>
-        </td>
+        </td> -->
     </tr>
 </table>
 
@@ -51,12 +51,12 @@
             {{selectedTeam.association}} - {{selectedTeam.confederation}}
         </span>
         <br>
-        <br>
-        <span *ngIf="sTeamMatches.length > 0">
-            Recent Form:
+        <span *ngIf="sTeamMatches.length == 0">
+            No data found for this team.
         </span>
-        <br>
-        <br>
+        <span *ngIf="sTeamMatches.length > 0">
+            Recent Form
+        </span>
         <table *ngIf="sTeamMatches.length > 0" class="mtable">
             <tr>
                 <th *ngFor="let x of matchTableHeaders">
@@ -66,15 +66,15 @@
             <tr *ngFor="let mm of sTeamMatches">
                 <td>{{mm.fmatchdate}}</td>
                 <td>{{mm.compcode}}</td>
-                <td>{{mm.seasonname}}</td>
-                <td>{{mm.stageshort}}</td>
+                <!-- <td>{{mm.seasonname}}</td> -->
+                <!-- <td>{{mm.stageshort}}</td> -->
                 <!-- Side (H,A,N) -->
                 <td>
                     <span *ngIf="mm.side == 'H'"><i class="material-icons gicon">home</i></span>
                     <span *ngIf="mm.side == 'A'"><i class="material-icons yicon">flight_takeoff</i></span>
                     <span *ngIf="mm.side == 'N'"><i class="material-icons nicon">lens</i></span>
                 </td>
-                <td>{{mm.teamcode}}</td>
+                <!-- <td>{{mm.teamcode}}</td> -->
                 <td>{{mm.goalft}}-{{mm.xgoalft}}</td>
                 <td>{{mm.against}}</td>
                 <!-- FT Result -->

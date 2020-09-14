@@ -23,11 +23,11 @@ export class PersonaComponent implements OnInit {
   personaSummary: any;
   sortState: string;
   tableHeaders = [
-    {'header': 'PID', 'value': 'personaid'},
+    // {'header': 'PID', 'value': 'personaid'},
     {'header': 'First Name', 'value': 'firstname'},
     {'header': 'Last Name', 'value': 'lastname'},
     {'header': 'DOB', 'value': 'fdob'},
-    {'header': 'Stats', 'value': 'details'}
+    // {'header': 'Stats', 'value': 'details'}
   ];
 
   filterOptions = [

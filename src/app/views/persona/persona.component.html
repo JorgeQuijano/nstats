@@ -14,14 +14,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let x of pagedItems">
-                <td>{{x.personaid}}</td>
+            <tr *ngFor="let x of pagedItems" (click)="personaDetails(x.personaid, 'personaDetailsModal')">
+                <!-- <td>{{x.personaid}}</td> -->
                 <td>{{x.firstname}}</td>
                 <td>{{x.lastname}}</td>
                 <td>{{x.fdob}}</td>
-                <td>
+                <!-- <td>
                     <button (click)="personaDetails(x.personaid, 'personaDetailsModal')" class="md-button"><i class="material-icons regularIcon">info</i></button>
-                </td>
+                </td> -->
             </tr>
         </tbody>
     </table>
@@ -68,9 +68,9 @@
                 <!-- Assists -->
                 <th><i class="material-icons regularIcon">connect_without_contact</i></th>
                 <!-- Yellow Cards -->
-                <th><i class="material-icons yicon">style</i></th>
+                <th><i class="material-icons yicon">sensor_door</i></th>
                 <!-- Red Cards -->
-                <th><i class="material-icons ricon">style</i></th>
+                <th><i class="material-icons ricon">sensor_door</i></th>
                 <!-- Missed Penalties -->
                 <th></th>
                 <!-- Penalties Saved -->

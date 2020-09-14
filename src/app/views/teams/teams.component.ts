@@ -21,22 +21,22 @@ export class TeamsComponent implements OnInit {
   selectedTeam: any;
   sTeamMatches: any;
   teamTableHeaders = [
-    {'header': 'TID', 'value': 'teamid'},
+    // {'header': 'TID', 'value': 'teamid'},
     {'header': 'Team', 'value': 'teamshortname'},
     {'header': 'Country', 'value': 'country'},
-    {'header': 'Details', 'value': 'details'}
+    // {'header': 'Details', 'value': 'details'}
   ];
 
   matchTableHeaders = [
     {'header': 'Date', 'value': 'matchdate'},
     {'header': 'Comp', 'value': 'compcode'},
-    {'header': 'Season', 'value': 'seasonname'},
-    {'header': 'Stage', 'value': 'stageshort'},
+    // {'header': 'Season', 'value': 'seasonname'},
+    // {'header': 'Stage', 'value': 'stageshort'},
     {'header': 'Side', 'value': 'side'},
-    {'header': 'Team', 'value': 'teamcode'},
-    {'header': 'FT', 'value': 'score'},
+    // {'header': 'Team', 'value': 'teamcode'},
+    {'header': 'Score', 'value': 'score'},
     {'header': 'Against', 'value': 'against'},
-    {'header': 'Result', 'value': 'resultft'},
+    {'header': 'FT', 'value': 'resultft'},
     {'header': 'HT', 'value': 'htscore'},
     {'header': 'HT', 'value': 'resultht'},
     
