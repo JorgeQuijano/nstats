@@ -13,6 +13,7 @@
     border: 1px solid grey;
     text-align: center;
     font-size: 14px;
+    height: 23px;
   }
 
 .mtable th {
@@ -21,6 +22,7 @@
     font-weight: bold;
     background-color: #006633;
     font-size: 14px;
+    height: 23px;
 }
 
 .mtable tr:nth-child(even){background-color: #282828;}
@@ -42,6 +44,7 @@
         border: 1px solid grey;
         text-align: center;
         font-size: 16px;
+        height: 22px;
       }
     
     .mtable th {
@@ -50,6 +53,7 @@
         font-weight: bold;
         background-color: #006633;
         font-size: 16px;
+        height: 22px;
     }
 }
 
