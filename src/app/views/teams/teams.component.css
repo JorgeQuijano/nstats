@@ -11,10 +11,21 @@ button{
 /* Teams Table */
 
 .ttable {
+    width: 100%;
     border-collapse: collapse;
     border: 1px solid grey;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (min-width: 800px) {
+    .ttable {
+        width: auto;
+        border-collapse: collapse;
+        border: 1px solid grey;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .ttable td {

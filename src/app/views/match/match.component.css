@@ -10,7 +10,7 @@
 
 @media screen and (min-width: 800px) {
     .mtable {
-        width: 75%;
+        width: auto;
         border-collapse: collapse;
         border: 1px solid grey;
         margin-left: auto;
@@ -101,11 +101,13 @@ font-weight: bold;
 }
 
 .modal-button {
-    color: white;
+    background-color: #E8E8E8;
+    color: black;
+    margin: 8px 0;
     border: none;
-    cursor:pointer;
-    overflow: hidden;
-    background-color: grey;
+    cursor: pointer;
+    width: 80px;
+    height: 35px;
     border-radius: 4px;
 }
 

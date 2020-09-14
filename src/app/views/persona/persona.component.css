@@ -1,10 +1,21 @@
 /* Main Table */
 
 .ptable {
+    width: 100%;
     border-collapse: collapse;
     border: 1px solid grey;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (min-width: 800px) {
+    .ptable {
+        width: auto;
+        border-collapse: collapse;
+        border: 1px solid grey;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .ptable td {
