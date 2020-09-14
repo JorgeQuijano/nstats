@@ -34,13 +34,13 @@ export class MatchComponent implements OnInit {
   uniqueArray = [];
   tableHeaders = [
     {'header': 'Comp', 'value': 'compcode'},
-    {'header': 'Season', 'value': 'seasonname'},
-    {'header': 'Stage', 'value': 'stageshort'},
+    // {'header': 'Season', 'value': 'seasonname'},
+    // {'header': 'Stage', 'value': 'stageshort'},
     {'header': 'Date', 'value': 'fmatchdate'},
     {'header': 'T1', 'value': 't1shortname'},
     {'header': 'Result', 'value': 't1goalft'},
     {'header': 'T2', 'value': 't2shortname'},
-    {'header': 'Details', 'value': 'details'}
+    // {'header': 'Details', 'value': 'details'}
   ];
 
   filterOptions = [
