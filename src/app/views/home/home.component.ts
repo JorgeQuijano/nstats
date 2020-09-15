@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
 
   getComps(x:any):void {
     this.comps = this.findUnique(x, y => y.compcode);
-    console.log(this.comps);
+    
   }
 
   findUnique(arr: any, predicate: any) {

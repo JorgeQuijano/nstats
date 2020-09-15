@@ -68,10 +68,9 @@ export class TeamsComponent implements OnInit {
   searchTeam(event: any):void{
     this.temptableData = this.tableData;
     let term = event.target.value;
-    term.toLowerCase();
     let filteredPersonas = this.temptableData.filter(
       x =>
-      x.teamfullname.toLowerCase().includes(term)
+      x.teamfullname.toLowerCase().includes(term.toLowerCase())
     )
     this.temptableData = filteredPersonas;
     this.setPage(this.pager.currentPage);

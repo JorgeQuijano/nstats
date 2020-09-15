@@ -57,12 +57,12 @@ export class PersonaComponent implements OnInit {
   }
 
   searchPersona(event: any):void{
+    console.log(event.target.value);
     this.temptableData = this.tableData;
     let term = event.target.value;
-    term.toLowerCase();
     let filteredPersonas = this.temptableData.filter(
       x =>
-      x.fullname.toLowerCase().includes(term)
+      x.fullname.toLowerCase().includes(term.toLowerCase())
     )
     this.temptableData = filteredPersonas;
     this.setPage(this.pager.currentPage);

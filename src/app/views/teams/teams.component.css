@@ -36,9 +36,10 @@ button{
 
 .persona-search {
     width: 95%;
-    height: 20px;
+    height: 22px;
     border-radius: 4px;
     text-align: center;
+    font-size: 16px;
 }
 
 @media screen and (min-width: 800px) {
