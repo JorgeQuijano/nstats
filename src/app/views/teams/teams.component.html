@@ -1,15 +1,19 @@
 <h3>Teams</h3>
-
+<input class="persona-search" type="text" placeholder="Search.." (keyup)="searchTeam($event)">
+<br>
+<br>
 <table class="ttable">
     <tr>
         <th *ngFor="let x of teamTableHeaders">
-            {{x.header}}
+            <span (click)="sortTable(x.value)">
+                {{x.header}}
+            </span>
         </th>
     </tr>
     <tr *ngFor="let x of pagedItems" (click)="teamDetails(x, 'teamDetailsModal')">
         <!-- <td>{{x.teamid}}</td> -->
         <td>{{x.teamshortname}}</td>
-        <td>{{x.country}}</td>
+        <td>{{x.countryname}}</td>
         <!-- <td>
             <button (click)="teamDetails(x, 'teamDetailsModal')">
                 <i class="material-icons regularIcon">info</i>

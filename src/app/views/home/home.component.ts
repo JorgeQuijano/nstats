@@ -11,6 +11,7 @@ import { ModalService } from '../../_modal/modal.service';
 export class HomeComponent implements OnInit {
 
   matches = [];
+  comps = [];
   tableHeaders = [
     {'header': 'Comp', 'value': 'compcode'},
     // {'header': 'Season', 'value': 'seasonname'},
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit {
     this.matchService.getMatchRawL7()
       .subscribe(res => {
         this.matches = res;
+        this.getComps(res);
       })
   }
 
@@ -80,6 +82,20 @@ export class HomeComponent implements OnInit {
       this.matches.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
       this.sortState = 'desc'
     }
+  }
+
+  getComps(x:any):void {
+    this.comps = this.findUnique(x, y => y.compcode);
+    console.log(this.comps);
+  }
+
+  findUnique(arr: any, predicate: any) {
+    let hash = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (!hash[arr[i][predicate]]) hash[arr[i][predicate]] = [];
+        hash[arr[i][predicate]].push(arr[i]);
+    }
+    return hash;
   }
 
   closeModal(id: string) {

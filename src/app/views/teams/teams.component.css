@@ -18,16 +18,6 @@ button{
     margin-right: auto;
 }
 
-@media screen and (min-width: 800px) {
-    .ttable {
-        width: auto;
-        border-collapse: collapse;
-        border: 1px solid grey;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
 .ttable td {
     border: 1px solid grey;
     text-align: center;
@@ -43,6 +33,30 @@ button{
 .ttable tr:nth-child(even){background-color: #282828;}
 
 .ttable tr:hover {background-color: grey;}
+
+.persona-search {
+    width: 95%;
+    height: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    .ttable {
+        width: auto;
+        border-collapse: collapse;
+        border: 1px solid grey;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .persona-search {
+        width: auto;
+        border-radius: 4px;
+        text-align: center;
+        height: 24px;
+    }
+}
 
 .pagination {
     padding: 14px 16px;

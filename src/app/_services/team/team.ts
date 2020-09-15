@@ -8,4 +8,5 @@ export interface Team {
     teamcode: string;
     association: string;
     confederation: string;
+    countryname: string;
   }

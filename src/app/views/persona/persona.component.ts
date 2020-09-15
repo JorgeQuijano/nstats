@@ -56,6 +56,18 @@ export class PersonaComponent implements OnInit {
       } );
   }
 
+  searchPersona(event: any):void{
+    this.temptableData = this.tableData;
+    let term = event.target.value;
+    term.toLowerCase();
+    let filteredPersonas = this.temptableData.filter(
+      x =>
+      x.fullname.toLowerCase().includes(term)
+    )
+    this.temptableData = filteredPersonas;
+    this.setPage(this.pager.currentPage);
+  }
+
   sortTable(x:string): void {
     if (this.sortState == undefined) {
       this.temptableData.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
@@ -91,7 +103,7 @@ export class PersonaComponent implements OnInit {
 
     // get current page of items
     this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
-}
+  }
 
   closeModal(id: string) {
     this.modalService.close(id);

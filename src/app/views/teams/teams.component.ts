@@ -13,6 +13,9 @@ import { Team } from "../../_services/team/team";
 export class TeamsComponent implements OnInit {
 
   pager: any = {};
+  tableData = [];
+  temptableData = [];
+  sortState: string;
   pagedItems: any[];
   currentPage = 1;
 
@@ -23,7 +26,7 @@ export class TeamsComponent implements OnInit {
   teamTableHeaders = [
     // {'header': 'TID', 'value': 'teamid'},
     {'header': 'Team', 'value': 'teamshortname'},
-    {'header': 'Country', 'value': 'country'},
+    {'header': 'Country', 'value': 'countryname'},
     // {'header': 'Details', 'value': 'details'}
   ];
 
@@ -56,9 +59,37 @@ export class TeamsComponent implements OnInit {
   getTeams():void {
     this.teamService.getTeams()
       .subscribe(x=>{
-        this.teams = x;
+        this.tableData = x;
+        this.temptableData = x;
         this.setPage(this.currentPage);
       })
+  }
+
+  searchTeam(event: any):void{
+    this.temptableData = this.tableData;
+    let term = event.target.value;
+    term.toLowerCase();
+    let filteredPersonas = this.temptableData.filter(
+      x =>
+      x.teamfullname.toLowerCase().includes(term)
+    )
+    this.temptableData = filteredPersonas;
+    this.setPage(this.pager.currentPage);
+  }
+
+  sortTable(x:string): void {
+    if (this.sortState == undefined) {
+      this.temptableData.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
+      this.sortState = 'asc'
+    } else if (this.sortState == 'desc'){
+      this.temptableData.sort((a, b) => a[x] < b[x] ? 1 : a[x] > b[x] ? -1 : 0);
+      this.sortState = 'asc'
+    } else if (this.sortState == 'asc'){
+      this.temptableData.sort((a, b) => a[x] < b[x] ? -1 : a[x] > b[x] ? 1 : 0);
+      this.sortState = 'desc'
+    }
+    this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
+    this.setPage(this.pager.currentPage);
   }
 
   teamDetails(team: Team, modalid: string): void {
@@ -75,10 +106,10 @@ export class TeamsComponent implements OnInit {
 
   setPage(page: number) {
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.teams.length, page);
+    this.pager = this.pagerService.getPager(this.temptableData.length, page);
 
     // get current page of items
-    this.pagedItems = this.teams.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
   closeModal(id: string) {
