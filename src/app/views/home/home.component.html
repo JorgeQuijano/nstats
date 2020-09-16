@@ -21,7 +21,7 @@
                 <!-- <td>{{x.stageshort}}</td> -->
                 <td>{{x.fmatchdate}}</td>
                 <td>{{x.t1shortname}}</td>
-                <td>{{x.t1goalft}}-{{x.t2goalft}}</td>
+                <td>{{x.t1goalft}}<span *ngIf="x.t1goalft !== null">-</span><span *ngIf="x.t1goalft == null">?</span>{{x.t2goalft}}</td>
                 <td>{{x.t2shortname}}</td>
                 <!-- <td>
                     <button (click)="matchDetails(x.matchid, 'matchDetailsModalL7')" class="md-button"><i class="material-icons regularIcon">info</i></button>
@@ -43,13 +43,13 @@
         <br>
 
         <span>{{selectedMatchRaw.stadiumname}}<span *ngIf=selectedMatchRaw.neutral_match>ⁿ</span>, {{selectedMatchRaw.stadiumcity}}, {{selectedMatchRaw.stadiumcountry}}.</span>
-        <br>
-        <span>Assistance: {{selectedMatchRaw.spectators}}</span>
-        <br>
-        <br>
+        <br *ngIf="selectedMatchRaw.spectators">
+        <span *ngIf="selectedMatchRaw.spectators">Assistance: {{selectedMatchRaw.spectators}}</span>
+        <br *ngIf="selectedMatchRaw.spectators">
+        <br *ngIf="selectedMatchRaw.spectators">
 
         <table class="mdtable">
-            <tr>
+            <tr *ngIf="selectedMatchRaw.t1goalft">
                 <th>{{selectedMatchRaw.t1code}}</th>
                 <th>{{selectedMatchRaw.t1goalft}} - {{selectedMatchRaw.t2goalft}}</th>
                 <th>{{selectedMatchRaw.t2code}}</th>

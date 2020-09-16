@@ -5,6 +5,14 @@ html, body {
     background-color: black;
 }
 
+input::placeholder {
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+input::-ms-input-placeholder {
+    font-family: 'Red Hat Display', sans-serif;
+}
+
 .container {
     padding: 4px;
     text-align: center;  
