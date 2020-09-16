@@ -15,11 +15,10 @@ export class MatchComponent implements OnInit {
 
   tableData = [];
   temptableData = [];
-
   pager: any = {};
   pagedItems: any[];
   currentPage = 1;
-
+  showfilters = false;
   selectedMatchID: number;
   selectedMatchRaw: any;
   t1ActionsXI: any;
@@ -34,15 +33,11 @@ export class MatchComponent implements OnInit {
   uniqueArray = [];
   tableHeaders = [
     {'header': 'Comp', 'value': 'compcode'},
-    // {'header': 'Season', 'value': 'seasonname'},
-    // {'header': 'Stage', 'value': 'stageshort'},
     {'header': 'Date', 'value': 'matchdate'},
     {'header': 'T1', 'value': 't1shortname'},
     {'header': 'FT', 'value': 't1goalft'},
-    {'header': 'T2', 'value': 't2shortname'},
-    // {'header': 'Details', 'value': 'details'}
+    {'header': 'T2', 'value': 't2shortname'}
   ];
-
   filterOptions = [
     {'option': 'Sort ASC'},
     {'option': 'Sort DESC'},
@@ -65,7 +60,7 @@ export class MatchComponent implements OnInit {
         this.tableData = res;
         this.temptableData = res;
         this.setPage(this.currentPage);
-        this.getFilters(res);
+        this.getBetterFilters(res);
       } );
   }
 
@@ -84,16 +79,19 @@ export class MatchComponent implements OnInit {
     this.setPage(this.pager.currentPage);
   }
 
-  filterTable(xvalue:string, xcolumn:string): void {
-    if (xvalue == 'all') {
-      this.temptableData = this.tableData;
-    } else if (xcolumn == 'team' && xvalue !== 'all') {
-      this.temptableData =  this.tableData.filter(row => row.t1 == xvalue || row.t2 == xvalue);
-    } else {
-      this.temptableData =  this.tableData.filter(row => row[xcolumn] == xvalue);
-    }
+  filterTable(comp: any, season: any, team: any): void {
+    this.temptableData = this.tableData.filter(x =>
+      (comp === 'all' ? x.comp == x.comp : x.comp == comp) &&
+      (season === 'all' ? x.season == x.season : x.season == season) &&
+      (
+        team === 'all' ? x.t1 == x.t1 : x.t1 == team ||
+        team === 'all' ? x.t2 == x.t2 : x.t2 == team
+      )      
+    );
+    
     this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
     this.setPage(this.pager.currentPage);
+    // this.getBetterFilters(this.temptableData);
   }
 
   matchDetails(mid:number, modalid:string):void {
@@ -127,13 +125,27 @@ export class MatchComponent implements OnInit {
     this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
-  getFilters(x:any):void {
-    this.comps = this.findUnique(x, d => d.compcode);
-    this.comps.sort((a, b) => a.compcode < b.compcode ? -1 : a.compcode > b.compcode ? 1 : 0);
-    this.seasons = this.findUnique(x, d => d.season);
+  getBetterFilters(x: any): void {
+    let myComps = [... new Set(x.map(data => (
+      {'comp': data.comp, 'compname': data.compname})))];
+    let mySeasons = [... new Set(x.map(data => (
+      {'season': data.season, 'seasonname': data.seasonname})))];
+    let myTeams1 = [... new Set(x.map(data => (
+      {'team': data.t1, 'teamshortname': data.t1shortname})))];
+    let myTeams2 = [... new Set(x.map(data => (
+      {'team': data.t2, 'teamshortname': data.t2shortname})))];
+    let allTeams = myTeams1.concat(myTeams2);
+    
+    this.comps = this.findUnique(myComps, d => d.compname);
+    this.seasons = this.findUnique(mySeasons, d => d.season);
+    this.uTeams = this.findUnique(allTeams, d => d.team);
+    this.comps.sort((a, b) => a.compname < b.compname ? -1 : a.compname > b.compname ? 1 : 0);
     this.seasons.sort((a, b) => a.seasonname < b.seasonname ? 1 : a.seasonname > b.seasonname ? -1 : 0);
-    this.uTeams = this.findUnique(x, d => d.t1 || d.t2);
-    this.uTeams.sort((a, b) => a.t1shortname < b.t1shortname ? -1 : a.t1shortname > b.t1shortname ? 1 : 0);
+    this.uTeams.sort((a, b) => a.teamshortname < b.teamshortname ? -1 : a.teamshortname > b.teamshortname ? 1 : 0);
+  }
+
+  hidefilters(): void {
+    this.showfilters = !this.showfilters;
   }
 
   findUnique(arr, predicate) {

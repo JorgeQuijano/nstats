@@ -1,28 +1,43 @@
 <h3>Historical Matches</h3>
-<div class="tableFilters">
+<button class="filter-button" (click)="hidefilters()">
+    Filter
+    <i class="material-icons filter-icons">filter_alt</i>
+</button>
+
+<div class="tableFilters" *ngIf="showfilters">
     <label for="comps">Comp: </label>
-    <select #comp name="comps" class="alignFilters" (change)="filterTable(comp.value, 'comp')">
+    <br>
+    <select #comp name="comps" class="alignFilters">
         <option value="all">All</option>
         <option *ngFor= "let x of comps" [value]="x.comp">
-            {{x.compcode}}
+            {{x.compname}}
         </option>
     </select>
+    <br>
 
     <label for="seasons"> Season: </label>
-    <select #season name="seasons" class="alignFilters" (change)="filterTable(season.value, 'season')">
+    <br>
+    <select #season name="seasons" class="alignFilters">
         <option value="all">All</option>
         <option *ngFor= "let x of seasons" [value]="x.season">
             {{x.seasonname}}
         </option>
     </select>
+    <br>
 
     <label for="teams"> Team: </label>
-    <select #team name="teams" class="alignFilters" (change)="filterTable(team.value, 'team')">
+    <br>
+    <select #team name="teams" class="alignFilters">
         <option value="all">All</option>
-        <option *ngFor= "let x of uTeams" [value]="x.t1">
-            {{x.t1shortname}}
+        <option *ngFor= "let x of uTeams" [value]="x.team">
+            {{x.teamshortname}}
         </option>
     </select>
+    <br>
+    <button class="filter-button" (click)="filterTable(comp.value, season.value, team.value)">
+        Search
+        <i class="material-icons filter-icons">search</i>
+    </button>
 </div>
 
 <br>
