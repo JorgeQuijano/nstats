@@ -167,9 +167,9 @@
             </tr>
         </table>
 
-        <br>
+        <br *ngIf="t1ActionsXI.length > 0">
 
-        <div class="actionsTables">
+        <div class="actionsTables" *ngIf="t1ActionsXI.length > 0">
             <table class="mdtable">
                 <tr>
                     <td><span *ngIf="t1ActionsXI.length > 0" class="teamName">Starting XI </span></td>
