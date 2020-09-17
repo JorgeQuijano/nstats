@@ -1,6 +1,4 @@
-<h3>
-    Recent Matches
-</h3>
+<h3>Recent Matches</h3>
 
 <!-- Match Table -->
 <div>
@@ -49,7 +47,7 @@
         <br *ngIf="selectedMatchRaw.spectators">
 
         <table class="mdtable">
-            <tr *ngIf="selectedMatchRaw.t1goalft">
+            <tr *ngIf="selectedMatchRaw.t1goalft !== null">
                 <th>{{selectedMatchRaw.t1code}}</th>
                 <th>{{selectedMatchRaw.t1goalft}} - {{selectedMatchRaw.t2goalft}}</th>
                 <th>{{selectedMatchRaw.t2code}}</th>
