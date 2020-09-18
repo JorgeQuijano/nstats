@@ -11,9 +11,9 @@ import { ActionService } from "../../_services/action/action.service";
 })
 export class MatchDetailsComponent implements OnInit {
   selectedMatchRaw: any;
-  matchid: any;
-  // matchid = +this.route.snapshot.paramMap.get('mid');
-  
+  // matchid: any;
+  matchid = +this.route.snapshot.paramMap.get('mid');
+  // matchid = this.route.paramMap.
   t1ActionsXI: any;
   t1ActionsSub: any;
   t2ActionsXI: any;
@@ -26,15 +26,15 @@ export class MatchDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      console.log(params);
-      this.matchid = params.get('mid');
-      this.getMatchStats();
-      this.getMatchActions();
-    })
+    // this.route.paramMap.subscribe(params => {
+    //   console.log(params);
+    //   this.matchid = params.get('mid');
+    //   this.getMatchStats();
+    //   this.getMatchActions();
+    // })
     
-    // this.getMatchStats();
-    // this.getMatchActions();
+    this.getMatchStats();
+    this.getMatchActions();
     // console.log(this.route);
   }
 
