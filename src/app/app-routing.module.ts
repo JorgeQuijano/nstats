@@ -15,7 +15,7 @@ const routes: Routes = [
   // { path: '**', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'match', component: MatchComponent},
-  { path: 'match-details/:mid', component: MatchDetailsComponent},
+  { path: 'match-details/:mid', component: MatchDetailsComponent, pathMatch: 'full'},
   { path: 'persona', component: PersonaComponent },
   { path: 'stats', component: StatsComponent },
   { path: 'about', component: AboutComponent },
