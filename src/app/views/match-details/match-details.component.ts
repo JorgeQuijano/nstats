@@ -26,7 +26,7 @@ export class MatchDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    +this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
       console.log(params);
       this.matchid = params.get('mid');
       this.getMatchStats();
