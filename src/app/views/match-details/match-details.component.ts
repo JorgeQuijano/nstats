@@ -12,7 +12,7 @@ import { ActionService } from "../../_services/action/action.service";
 export class MatchDetailsComponent implements OnInit {
   selectedMatchRaw: any;
   // matchid: any;
-  matchid = +this.route.snapshot.paramMap.get('mid');
+  matchid: any;
   // matchid = this.route.paramMap.
   t1ActionsXI: any;
   t1ActionsSub: any;
@@ -32,7 +32,7 @@ export class MatchDetailsComponent implements OnInit {
     //   this.getMatchStats();
     //   this.getMatchActions();
     // })
-    
+    this.matchid = +this.route.snapshot.paramMap.get('mid');
     this.getMatchStats();
     this.getMatchActions();
     // console.log(this.route);
