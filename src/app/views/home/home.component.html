@@ -14,7 +14,8 @@
         </thead>
         <tbody>
             <!-- <tr *ngFor="let x of matches" (click)="matchDetails(x.matchid, 'matchDetailsModalL7')"> -->
-            <tr *ngFor="let x of matches" (click)="matchDetails('/match-details/'+x.matchid)">
+            <!-- <tr *ngFor="let x of matches" (click)="matchDetails('/match-details/'+x.matchid)"> -->
+            <tr *ngFor="let x of matches" target="_blank" [routerLink]="['/match-details', x.matchid]">
                 <td>{{x.compcode}}</td>
                 <!-- <td>{{x.seasonname}}</td> -->
                 <!-- <td>{{x.stageshort}}</td> -->
