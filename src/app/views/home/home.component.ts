@@ -72,11 +72,13 @@ export class HomeComponent implements OnInit {
             
     //       });
     //   } );
-    let url = this.router.serializeUrl(
-      this.router.createUrlTree([mid])
-    );
+    // let url = this.router.serializeUrl(
+    //   this.router.createUrlTree([mid])
+    // );
     // window.open()
-    window.open(url, '_blank');
+
+    this.router.navigate([]).then(result => {  window.open(mid, '_blank'); });
+    // window.open(mid, '_blank');
   }
 
   sortTable(x:string): void {
