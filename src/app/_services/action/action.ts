@@ -38,6 +38,8 @@ export interface MatchActionsSummary {
   teamid: number;
   actionshort: string;
   persona: string;
+  firstname: string;
+  lastname: string;
   sbo_time: number;
   sbi_time: number;
   wo_time: number;

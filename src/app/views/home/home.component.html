@@ -13,7 +13,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let x of matches" (click)="matchDetails(x.matchid, 'matchDetailsModalL7')">
+            <!-- <tr *ngFor="let x of matches" (click)="matchDetails(x.matchid, 'matchDetailsModalL7')"> -->
+            <tr *ngFor="let x of matches" (click)="matchDetails('/match-details/'+x.matchid)">
                 <td>{{x.compcode}}</td>
                 <!-- <td>{{x.seasonname}}</td> -->
                 <!-- <td>{{x.stageshort}}</td> -->
@@ -30,7 +31,7 @@
 </div>
 
 <!-- Match Details Modal -->
-<jw-modal id="matchDetailsModalL7">
+<!-- <jw-modal id="matchDetailsModalL7">
     <div *ngIf="selectedMatchRaw" class="match-modal">
         <h4>Match Statistics</h4>
         <span>{{selectedMatchRaw.matchid}}</span>
@@ -125,7 +126,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <!-- Space Subs -->
                     <td></td>
                 </tr>
                 <tr>
@@ -163,7 +163,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <!-- Space Subs -->
                     <td></td> 
                 </tr>
                 <tr>
@@ -187,4 +186,4 @@
 
         <button class="modal-button" (click)="closeModal('matchDetailsModalL7');">Close</button>
     </div>
-</jw-modal>
+</jw-modal> -->

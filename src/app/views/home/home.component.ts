@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { MatchService } from "../../_services/match/match.service";
 import { ActionService } from "../../_services/action/action.service";
-import { ModalService } from '../../_modal/modal.service';
+// import { ModalService } from '../../_modal/modal.service';
+
 
 @Component({
   selector: 'app-home',
@@ -33,7 +35,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private matchService: MatchService,
     private actionService: ActionService,
-    private modalService: ModalService
+    // private modalService: ModalService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,27 +51,32 @@ export class HomeComponent implements OnInit {
       })
   }
 
-  matchDetails(mid:number, modalid:string):void {
-    this.matchService.getMatchRaw(mid)
-      .subscribe(res => {
-        this.actionService.getMatchActions(mid)
-          .subscribe(x => {
-            this.actionService.getMatchActionsSummaryt1(mid)
-              .subscribe(xt1 => {
-                this.actionService.getMatchActionsSummaryt2(mid)
-                  .subscribe(xt2 => {
-                    this.t1ActionsSub = xt1.filter(x=> x.actionshort == 'Sub');
-                    this.t1ActionsXI = xt1.filter(x=> x.actionshort == 'SXI');
-                    this.t2ActionsXI = xt2.filter(x=> x.actionshort == 'SXI');
-                    this.t2ActionsSub = xt2.filter(x=> x.actionshort == 'Sub');
-                    this.selectedMatchRaw = res;
-                    this.selectedMatchID = mid;
-                    this.modalService.open(modalid);
-                  })
-              })
+  matchDetails(mid:string):void {
+    // this.matchService.getMatchRaw(mid)
+    //   .subscribe(res => {
+    //     this.actionService.getMatchActions(mid)
+    //       .subscribe(x => {
+    //         this.actionService.getMatchActionsSummaryt1(mid)
+    //           .subscribe(xt1 => {
+    //             this.actionService.getMatchActionsSummaryt2(mid)
+    //               .subscribe(xt2 => {
+    //                 this.t1ActionsSub = xt1.filter(x=> x.actionshort == 'Sub');
+    //                 this.t1ActionsXI = xt1.filter(x=> x.actionshort == 'SXI');
+    //                 this.t2ActionsXI = xt2.filter(x=> x.actionshort == 'SXI');
+    //                 this.t2ActionsSub = xt2.filter(x=> x.actionshort == 'Sub');
+    //                 this.selectedMatchRaw = res;
+    //                 this.selectedMatchID = mid;
+    //                 this.modalService.open(modalid);
+    //               })
+    //           })
             
-          });
-      } );    
+    //       });
+    //   } );
+    let url = this.router.serializeUrl(
+      this.router.createUrlTree([mid])
+    );
+    // window.open()
+    window.open(url, '_blank');
   }
 
   sortTable(x:string): void {
@@ -98,8 +106,8 @@ export class HomeComponent implements OnInit {
     return hash;
   }
 
-  closeModal(id: string) {
-    this.modalService.close(id);
-  }
+  // closeModal(id: string) {
+  //   this.modalService.close(id);
+  // }
 
 }
