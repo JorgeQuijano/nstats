@@ -13,8 +13,8 @@ import { MatchDetailsComponent } from "../app/views/match-details/match-details.
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'match', component: MatchComponent },
-  { path: 'match-details/:mid', component: MatchDetailsComponent },
+  { path: 'match/:id', component: MatchDetailsComponent },
+  { path: 'matches', component: MatchComponent },
   { path: 'persona', component: PersonaComponent },
   { path: 'stats', component: StatsComponent },
   { path: 'about', component: AboutComponent },

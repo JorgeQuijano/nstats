@@ -24,11 +24,11 @@ export class MatchDetailsComponent implements OnInit {
     private actionService: ActionService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     // this.matchid = +this.route.snapshot.paramMap.get('mid');
     // this.matchid = this.route.snapshot.params.mid;
     this.sub = this.route.params.subscribe(params => {
-      this.matchid = +params['mid'];
+      this.matchid = +params['id'];
       this.getMatchStats();
       this.getMatchActions();
     })
