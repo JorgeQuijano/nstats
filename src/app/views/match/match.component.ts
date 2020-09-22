@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from "../../_services/match/match.service";
-import { ActionService } from "../../_services/action/action.service";
 import { PagerService } from "../../_services/pagination/pager.service";
-// import { ModalService } from '../../_modal/modal.service';
 import { Router } from "@angular/router";
-
-import { MatchRaw } from "../../_services/match/match";
 
 @Component({
   selector: 'app-match',
@@ -46,8 +42,6 @@ export class MatchComponent implements OnInit {
 
   constructor(
     private matchService: MatchService,
-    // private modalService: ModalService,
-    private actionService: ActionService,
     private pagerService: PagerService,
     private router: Router
   ) { }
@@ -93,48 +87,17 @@ export class MatchComponent implements OnInit {
     
     this.pager = this.pagerService.getPager(this.temptableData.length, this.currentPage);
     this.setPage(this.pager.currentPage);
-    // this.getBetterFilters(this.temptableData);
   }
 
-  // matchDetails(mid:number, modalid:string):void {
   matchDetails(mid:string):void {
-    // this.matchService.getMatchRaw(mid)
-    //   .subscribe(res => {
-    //     this.actionService.getMatchActions(mid)
-    //       .subscribe(x => {
-    //         this.actionService.getMatchActionsSummaryt1(mid)
-    //           .subscribe(xt1 => {
-    //             this.actionService.getMatchActionsSummaryt2(mid)
-    //               .subscribe(xt2 => {
-    //                 this.t1ActionsSub = xt1.filter(x=> x.actionshort == 'Sub');
-    //                 this.t1ActionsXI = xt1.filter(x=> x.actionshort == 'SXI');
-    //                 this.t2ActionsXI = xt2.filter(x=> x.actionshort == 'SXI');
-    //                 this.t2ActionsSub = xt2.filter(x=> x.actionshort == 'Sub');
-    //                 this.selectedMatchRaw = res;
-    //                 this.selectedMatchID = mid;
-    //                 this.modalService.open(modalid);
-    //               })
-    //           })
-            
-    //       });
-    //   } );    
-    // this.router.navigate(['/match-details', mid])
-    // console.log(this.router.serializeUrl(
-    //   this.router.createUrlTree([mid])
-    // ));
     let url = this.router.serializeUrl(
       this.router.createUrlTree([mid])
     );
-    // window.open()
-    window.open(url, '_blank');
-    // console.log(mid);
   }
 
   setPage(page: number) { 
-    // get pager object from service
     this.pager = this.pagerService.getPager(this.temptableData.length, page);
 
-    // get current page of items
     this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
@@ -168,9 +131,5 @@ export class MatchComponent implements OnInit {
     });
     return Object.keys(found).map(key => found[key]); 
   }
-
-  // closeModal(id: string) {
-  //   this.modalService.close(id);
-  // }
-
+  
 }

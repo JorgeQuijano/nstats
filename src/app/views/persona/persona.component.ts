@@ -23,11 +23,9 @@ export class PersonaComponent implements OnInit {
   personaSummary: any;
   sortState: string;
   tableHeaders = [
-    // {'header': 'PID', 'value': 'personaid'},
     {'header': 'First Name', 'value': 'firstname'},
     {'header': 'Last Name', 'value': 'lastname'},
-    {'header': 'DOB', 'value': 'fdob'},
-    // {'header': 'Stats', 'value': 'details'}
+    {'header': 'DOB', 'value': 'fdob'}
   ];
 
   filterOptions = [
@@ -98,10 +96,7 @@ export class PersonaComponent implements OnInit {
   }
 
   setPage(page: number) {
-    // get pager object from service
     this.pager = this.pagerService.getPager(this.temptableData.length, page);
-
-    // get current page of items
     this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 

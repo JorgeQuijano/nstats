@@ -24,19 +24,14 @@ export class TeamsComponent implements OnInit {
   selectedTeam: any;
   sTeamMatches: any;
   teamTableHeaders = [
-    // {'header': 'TID', 'value': 'teamid'},
     {'header': 'Team', 'value': 'teamshortname'},
-    {'header': 'Country', 'value': 'countryname'},
-    // {'header': 'Details', 'value': 'details'}
+    {'header': 'Country', 'value': 'countryname'}
   ];
 
   matchTableHeaders = [
     {'header': 'Date', 'value': 'matchdate'},
     {'header': 'Comp', 'value': 'compcode'},
-    // {'header': 'Season', 'value': 'seasonname'},
-    // {'header': 'Stage', 'value': 'stageshort'},
     {'header': 'Side', 'value': 'side'},
-    // {'header': 'Team', 'value': 'teamcode'},
     {'header': 'Score', 'value': 'score'},
     {'header': 'Against', 'value': 'against'},
     {'header': 'FT', 'value': 'resultft'},
@@ -104,10 +99,7 @@ export class TeamsComponent implements OnInit {
   }
 
   setPage(page: number) {
-    // get pager object from service
     this.pager = this.pagerService.getPager(this.temptableData.length, page);
-
-    // get current page of items
     this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
