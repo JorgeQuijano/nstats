@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'stats', component: StatsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'teams', component: TeamsComponent }
+  { path: 'teams', component: TeamsComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
