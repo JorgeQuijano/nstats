@@ -33,7 +33,7 @@ export class MatchComponent implements OnInit {
   sortState: string;
   uniqueArray = [];
   tableHeaders = [
-    {'header': 'Comp', 'value': 'compcode'},
+    {'header': 'C', 'value': 'compcode'},
     {'header': 'Date', 'value': 'matchdate'},
     {'header': 'T1', 'value': 't1shortname'},
     {'header': 'FT', 'value': 't1goalft'},

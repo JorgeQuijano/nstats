@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   matches = [];
   comps = [];
   tableHeaders = [
-    {'header': 'Comp', 'value': 'compcode'},
+    {'header': 'C', 'value': 'compcode'},
     // {'header': 'Season', 'value': 'seasonname'},
     // {'header': 'Stage', 'value': 'stageshort'},
     {'header': 'Date', 'value': 'fmatchdate'},
