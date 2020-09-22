@@ -12,7 +12,7 @@ import { MatchDetailsComponent } from "../app/views/match-details/match-details.
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  // { path: '**', component: HomeComponent },
+  { path: '**', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'match', component: MatchComponent },
   { path: 'match-details/:mid', component: MatchDetailsComponent },
