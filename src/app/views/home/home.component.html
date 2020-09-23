@@ -1,5 +1,4 @@
 <h3>Recent Matches</h3>
-
 <!-- Match Table -->
 <div>
     <table #matchTableL7 class="mtable">
@@ -13,178 +12,13 @@
             </tr>
         </thead>
         <tbody>
-            <!-- <tr *ngFor="let x of matches" (click)="matchDetails(x.matchid, 'matchDetailsModalL7')"> -->
-            <!-- <tr *ngFor="let x of matches" (click)="matchDetails('/match-details/'+x.matchid)"> -->
             <tr href="#" *ngFor="let x of matches" target="_blank" [routerLink]="['/match', x.matchid]">
                 <td>{{x.compcode}}</td>
-                <!-- <td>{{x.seasonname}}</td> -->
-                <!-- <td>{{x.stageshort}}</td> -->
                 <td>{{x.fmatchdate}}</td>
                 <td>{{x.t1shortname}}</td>
                 <td>{{x.t1goalft}}<span *ngIf="x.t1goalft !== null">-</span><span *ngIf="x.t1goalft == null">?</span>{{x.t2goalft}}</td>
                 <td>{{x.t2shortname}}</td>
-                <!-- <td>
-                    <button (click)="matchDetails(x.matchid, 'matchDetailsModalL7')" class="md-button"><i class="material-icons regularIcon">info</i></button>
-                </td> -->
             </tr>
         </tbody>
     </table>
 </div>
-
-<!-- Match Details Modal -->
-<!-- <jw-modal id="matchDetailsModalL7">
-    <div *ngIf="selectedMatchRaw" class="match-modal">
-        <h4>Match Statistics</h4>
-        <span>{{selectedMatchRaw.matchid}}</span>
-        <br>
-        <span>{{selectedMatchRaw.seasonname}} | {{selectedMatchRaw.compname}} | {{selectedMatchRaw.fmatchdate}} | {{selectedMatchRaw.matchtime}}</span>
-        <br>
-        <span>{{selectedMatchRaw.stage}}</span>
-        <br>
-
-        <span>{{selectedMatchRaw.stadiumname}}<span *ngIf=selectedMatchRaw.neutral_match>ⁿ</span>, {{selectedMatchRaw.stadiumcity}}, {{selectedMatchRaw.stadiumcountry}}.</span>
-        <br *ngIf="selectedMatchRaw.spectators">
-        <span *ngIf="selectedMatchRaw.spectators">Assistance: {{selectedMatchRaw.spectators}}</span>
-        <br *ngIf="selectedMatchRaw.spectators">
-        <br *ngIf="selectedMatchRaw.spectators">
-
-        <table class="mdtable">
-            <tr *ngIf="selectedMatchRaw.t1goalft !== null">
-                <th>{{selectedMatchRaw.t1code}}</th>
-                <th>{{selectedMatchRaw.t1goalft}} - {{selectedMatchRaw.t2goalft}}</th>
-                <th>{{selectedMatchRaw.t2code}}</th>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.t1goalht !== null">
-                <td>{{selectedMatchRaw.t1goalht}}</td>
-                <td>HT Goals</td>
-                <td>{{selectedMatchRaw.t2goalht}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.ot">
-                <td>{{selectedMatchRaw.t1goals_ot}}</td>
-                <td>OT Goals*</td>
-                <td>{{selectedMatchRaw.t2goals_ot}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.shoot_out">
-                <td>{{selectedMatchRaw.t1goals_so}}</td>
-                <td>Pen Shoot-out*</td>
-                <td>{{selectedMatchRaw.t2goals_so}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.t1y !== null">
-                <td>{{selectedMatchRaw.t1y}}</td>
-                <td>Yellow Cards</td>
-                <td>{{selectedMatchRaw.t2y}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.t1r !== null">
-                <td>{{selectedMatchRaw.t1r}}</td>
-                <td>Red Cards</td>
-                <td>{{selectedMatchRaw.t2r}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.t1shots !== null">
-                <td>{{selectedMatchRaw.t1shots}}</td>
-                <td>Shots</td>
-                <td>{{selectedMatchRaw.t2shots}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.t1shotsot !== null">
-                <td>{{selectedMatchRaw.t1shotsot}}</td>
-                <td>Shots On Target</td>
-                <td>{{selectedMatchRaw.t2shotsot}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.t1corners !== null">
-                <td>{{selectedMatchRaw.t1corners}}</td>
-                <td>Corners</td>
-                <td>{{selectedMatchRaw.t2corners}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.t1fouls !== null">
-                <td>{{selectedMatchRaw.t1fouls}}</td>
-                <td>Fouls</td>
-                <td>{{selectedMatchRaw.t2fouls}}</td>
-            </tr>
-            <tr *ngIf="selectedMatchRaw.t1poss !== null">
-                <td>{{selectedMatchRaw.t1poss}}</td>
-                <td>Possession %</td>
-                <td>{{selectedMatchRaw.t2poss}}</td>
-            </tr>
-        </table>
-
-        <br *ngIf="t1ActionsXI.length > 0">
-
-        <div class="actionsTables" *ngIf="t1ActionsXI.length > 0">
-            <table class="mdtable">
-                <tr>
-                    <td><span *ngIf="t1ActionsXI.length > 0" class="teamName">Starting XI </span></td>
-                </tr>
-                <tr *ngFor="let x of t1ActionsXI">
-                    <td>
-                        <span *ngIf="x.sbo_time" class="material-icons ricon">swap_vert</span><span *ngIf="x.sbo_time" class="actionTime">{{x.sbo_time}}"</span>
-                        <span *ngIf="x.sbi_time" class="material-icons gicon">swap_vert</span><span *ngIf="x.sbi_time" class="actionTime">{{x.sbi_time}}"</span>
-                        <span *ngIf="x.wo_time" class="material-icons ricon">sync_problem</span><span *ngIf="x.wo_time" class="actionTime">{{x.wo_time}}"</span>
-                        {{x.persona}}
-                        <span *ngIf="x.gcount" class="material-icons gicon">sports_soccer</span><span *ngIf="x.gcount > 1" class="actionTime">({{x.gcount}})</span>
-                        <span *ngIf="x.acount" class="material-icons gicon">connect_without_contact</span><span *ngIf="x.acount > 1" class="actionTime">({{x.acount}})</span>
-                        <span *ngIf="x.ogcount" class="material-icons ricon">sports_soccer</span><span *ngIf="x.ogcount > 1" class="actionTime">({{x.ogcount}})</span>
-                        <span *ngIf="x.ycount" class="material-icons yicon">sensor_door</span>
-                        <span *ngIf="x.rcount" class="material-icons ricon">sensor_door</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><span *ngIf="t1ActionsSub.length > 0" class="teamName">Substitutes </span></td>
-                </tr>
-                <tr *ngFor="let x of t1ActionsSub">
-                    <td>
-                        <span *ngIf="x.sbo_time" class="material-icons ricon">swap_vert</span><span *ngIf="x.sbo_time" class="actionTime">{{x.sbo_time}}"</span>
-                        <span *ngIf="x.sbi_time" class="material-icons gicon">swap_vert</span><span *ngIf="x.sbi_time" class="actionTime">{{x.sbi_time}}"</span>
-                        <span *ngIf="x.wo_time" class="material-icons ricon">sync_problem</span><span *ngIf="x.wo_time" class="actionTime">{{x.wo_time}}"</span>
-                        {{x.persona}}
-                        <span *ngIf="x.gcount" class="material-icons gicon">sports_soccer</span><span *ngIf="x.gcount > 1" class="actionTime">({{x.gcount}})</span>
-                        <span *ngIf="x.acount" class="material-icons gicon">connect_without_contact</span><span *ngIf="x.acount > 1" class="actionTime">({{x.acount}})</span>
-                        <span *ngIf="x.ogcount" class="material-icons ricon">sports_soccer</span><span *ngIf="x.ogcount > 1" class="actionTime">({{x.ogcount}})</span>
-                        <span *ngIf="x.ycount" class="material-icons yicon">sensor_door</span>
-                        <span *ngIf="x.rcount" class="material-icons ricon">sensor_door</span>
-                    </td>
-                </tr>
-            </table>
-            <table class="mdtable">
-                <tr>
-                    <td><span *ngIf="t2ActionsXI.length > 0" class="teamName">Starting XI </span></td>
-                </tr>
-                <tr *ngFor="let x of t2ActionsXI">
-                    <td>
-                        <span *ngIf="x.sbo_time" class="material-icons ricon">swap_vert</span><span *ngIf="x.sbo_time" class="actionTime">{{x.sbo_time}}"</span>
-                        <span *ngIf="x.sbi_time" class="material-icons gicon">swap_vert</span><span *ngIf="x.sbi_time" class="actionTime">{{x.sbi_time}}"</span>
-                        <span *ngIf="x.wo_time" class="material-icons ricon">sync_problem</span><span *ngIf="x.wo_time" class="actionTime">{{x.wo_time}}"</span>
-                        {{x.persona}}
-                        <span *ngIf="x.gcount" class="material-icons gicon">sports_soccer</span><span *ngIf="x.gcount > 1" class="actionTime">({{x.gcount}})</span>
-                        <span *ngIf="x.acount" class="material-icons gicon">connect_without_contact</span><span *ngIf="x.acount > 1" class="actionTime">({{x.acount}})</span>
-                        <span *ngIf="x.ogcount" class="material-icons ricon">sports_soccer</span><span *ngIf="x.ogcount > 1" class="actionTime">({{x.ogcount}})</span>
-                        <span *ngIf="x.ycount" class="material-icons yicon">sensor_door</span>
-                        <span *ngIf="x.rcount" class="material-icons ricon">sensor_door</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td> 
-                </tr>
-                <tr>
-                    <td><span *ngIf="t2ActionsSub.length > 0" class="teamName">Substitutes </span></td>
-                </tr>
-                <tr *ngFor="let x of t2ActionsSub">
-                    <td>
-                        <span *ngIf="x.sbo_time" class="material-icons ricon">swap_vert</span><span *ngIf="x.sbo_time" class="actionTime">{{x.sbo_time}}"</span>
-                        <span *ngIf="x.sbi_time" class="material-icons gicon">swap_vert</span><span *ngIf="x.sbi_time" class="actionTime">{{x.sbi_time}}"</span>
-                        <span *ngIf="x.wo_time" class="material-icons ricon">sync_problem</span><span *ngIf="x.wo_time" class="actionTime">{{x.wo_time}}"</span>
-                        {{x.persona}}
-                        <span *ngIf="x.gcount" class="material-icons gicon">sports_soccer</span><span *ngIf="x.gcount > 1" class="actionTime">({{x.gcount}})</span>
-                        <span *ngIf="x.acount" class="material-icons gicon">connect_without_contact</span><span *ngIf="x.acount > 1" class="actionTime">({{x.acount}})</span>
-                        <span *ngIf="x.ogcount" class="material-icons ricon">sports_soccer</span><span *ngIf="x.ogcount > 1" class="actionTime">({{x.ogcount}})</span>
-                        <span *ngIf="x.ycount" class="material-icons yicon">sensor_door</span>
-                        <span *ngIf="x.rcount" class="material-icons ricon">sensor_door</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <button class="modal-button" (click)="closeModal('matchDetailsModalL7');">Close</button>
-    </div>
-</jw-modal> -->

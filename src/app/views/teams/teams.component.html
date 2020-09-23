@@ -10,15 +10,9 @@
             </span>
         </th>
     </tr>
-    <tr *ngFor="let x of pagedItems" (click)="teamDetails(x, 'teamDetailsModal')">
-        <!-- <td>{{x.teamid}}</td> -->
+    <tr href="#" *ngFor="let x of pagedItems" target="_blank" [routerLink]="['/team', x.teamid]">
         <td>{{x.teamshortname}}</td>
         <td>{{x.countryname}}</td>
-        <!-- <td>
-            <button (click)="teamDetails(x, 'teamDetailsModal')">
-                <i class="material-icons regularIcon">info</i>
-            </button>
-        </td> -->
     </tr>
 </table>
 
@@ -40,63 +34,3 @@
         <span (click)="setPage(pager.totalPages)"><i class="material-icons">last_page</i></span>
     </button>
 </div>
-
-<jw-modal id="teamDetailsModal">
-    <div *ngIf="selectedTeam" class="match-modal">
-        <span class="teamName">
-            {{selectedTeam.teamfullname}}
-        </span>
-        <br>
-        <span>
-            ({{selectedTeam.country}}, {{selectedTeam.city}})
-        </span>
-        <br>
-        <span>
-            {{selectedTeam.association}} - {{selectedTeam.confederation}}
-        </span>
-        <br>
-        <span *ngIf="sTeamMatches.length == 0">
-            No data found for this team.
-        </span>
-        <span *ngIf="sTeamMatches.length > 0">
-            Recent Form
-        </span>
-        <table *ngIf="sTeamMatches.length > 0" class="mtable">
-            <tr>
-                <th *ngFor="let x of matchTableHeaders">
-                    {{x.header}}
-                </th>
-            </tr>
-            <tr *ngFor="let mm of sTeamMatches">
-                <td>{{mm.fmatchdate}}</td>
-                <td>{{mm.compcode}}</td>
-                <!-- <td>{{mm.seasonname}}</td> -->
-                <!-- <td>{{mm.stageshort}}</td> -->
-                <!-- Side (H,A,N) -->
-                <td>
-                    <span *ngIf="mm.side == 'H'"><i class="material-icons gicon">home</i></span>
-                    <span *ngIf="mm.side == 'A'"><i class="material-icons yicon">flight_takeoff</i></span>
-                    <span *ngIf="mm.side == 'N'"><i class="material-icons nicon">lens</i></span>
-                </td>
-                <!-- <td>{{mm.teamcode}}</td> -->
-                <td>{{mm.goalft}}-{{mm.xgoalft}}</td>
-                <td>{{mm.against}}</td>
-                <!-- FT Result -->
-                <td>
-                    <span *ngIf="mm.resultft == 'W'"><i class="material-icons gicon">check_circle</i></span>
-                    <span *ngIf="mm.resultft == 'D'"><i class="material-icons yicon">lens</i></span>
-                    <span *ngIf="mm.resultft == 'L'"><i class="material-icons ricon">cancel</i></span>
-                </td>
-                <td>{{mm.goalht}}-{{mm.xgoalht}}</td>
-                <!-- HT Result -->
-                <td>
-                    <span *ngIf="mm.resultht == 'W'"><i class="material-icons gicon">check_circle</i></span>
-                    <span *ngIf="mm.resultht == 'D'"><i class="material-icons yicon">lens</i></span>
-                    <span *ngIf="mm.resultht == 'L'"><i class="material-icons ricon">cancel</i></span>
-                </td>
-            </tr>
-        </table>
-        <br>
-        <button class="modal-button" (click)="closeModal('teamDetailsModal');">Close</button>
-    </div>
-</jw-modal>

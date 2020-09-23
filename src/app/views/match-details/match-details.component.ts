@@ -29,7 +29,7 @@ export class MatchDetailsComponent implements OnInit {
       this.matchid = +params['id'];
       this.getMatchStats();
       this.getMatchActions();
-    })
+    });
   }
 
   getMatchStats(): void {

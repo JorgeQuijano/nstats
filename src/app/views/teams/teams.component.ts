@@ -28,22 +28,8 @@ export class TeamsComponent implements OnInit {
     {'header': 'Country', 'value': 'countryname'}
   ];
 
-  matchTableHeaders = [
-    {'header': 'Date', 'value': 'matchdate'},
-    {'header': 'Comp', 'value': 'compcode'},
-    {'header': 'Side', 'value': 'side'},
-    {'header': 'Score', 'value': 'score'},
-    {'header': 'Against', 'value': 'against'},
-    {'header': 'FT', 'value': 'resultft'},
-    {'header': 'HT', 'value': 'htscore'},
-    {'header': 'HT', 'value': 'resultht'},
-    
-  ];
-
   constructor(
     private teamService: TeamService,
-    private modalService: ModalService,
-    private matchService: MatchService,
     private pagerService: PagerService
   ) { }
 
@@ -86,25 +72,8 @@ export class TeamsComponent implements OnInit {
     this.setPage(this.pager.currentPage);
   }
 
-  teamDetails(team: Team, modalid: string): void {
-    
-    // Fixed limit (15 matches), we can change this later -----TBD------
-    this.matchService.getSincleColumnMatches(team.teamid, this.matchLimit)
-      .subscribe(x=> {
-        this.selectedTeam = team;
-        this.sTeamMatches = x;
-        this.modalService.open(modalid);
-      })
-    
-  }
-
   setPage(page: number) {
     this.pager = this.pagerService.getPager(this.temptableData.length, page);
     this.pagedItems = this.temptableData.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
-
-  closeModal(id: string) {
-    this.modalService.close(id);
-  }
-
 }

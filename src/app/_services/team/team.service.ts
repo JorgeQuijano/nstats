@@ -38,4 +38,12 @@ export class TeamService {
       );
   }
 
+  /** GET Single Team from the server */
+  getTeam (teamid: number): Observable<Team[]> {
+    return this.http.get<Team[]>(this.apiURL+`/${teamid}`)
+      .pipe(
+        catchError(this.handleError('getTeam', []))
+      );
+  }
+
 }

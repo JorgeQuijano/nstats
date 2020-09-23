@@ -1,0 +1,62 @@
+.match-details {
+    text-align: center;
+    color: white;
+}
+
+/* Icons Colors */
+
+.regularIcon {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.gicon {
+    font-size: 16px;
+    color: green;
+    font-weight: bold;
+}
+
+.yicon {
+    font-size: 16px;
+    color: #ffc40c;
+    font-weight: bold;
+}
+
+.ricon {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+}
+
+.bicon {
+    font-size: 16px;
+    color: blue;
+    font-weight: bold;
+}
+
+/* neutral */
+.nicon {
+    font-size: 16px;
+    color: #A9A9A9;
+    font-weight: bold;
+}
+
+/* Matches Table */
+
+.mtable {
+    border-collapse: collapse;
+    border: 1px solid grey;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mtable td {
+    border: 1px solid grey;
+    text-align: center;
+  }
+
+.mtable th {
+    border: 1px solid grey;
+    text-align: center;
+    font-weight: bold;
+}

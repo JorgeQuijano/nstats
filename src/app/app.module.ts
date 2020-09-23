@@ -19,6 +19,7 @@ import { MatchComponent } from './views/match/match.component';
 import { PersonaComponent } from './views/persona/persona.component';
 import { TeamsComponent } from './views/teams/teams.component';
 import { MatchDetailsComponent } from './views/match-details/match-details.component';
+import { TeamDetailsComponent } from './views/team-details/team-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatchDetailsComponent } from './views/match-details/match-details.compo
     MatchComponent,
     PersonaComponent,
     TeamsComponent,
-    MatchDetailsComponent
+    MatchDetailsComponent,
+    TeamDetailsComponent
   ],
   imports: [
     BrowserModule,
