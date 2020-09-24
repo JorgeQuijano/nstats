@@ -21,6 +21,7 @@ import { TeamsComponent } from './views/teams/teams.component';
 import { MatchDetailsComponent } from './views/match-details/match-details.component';
 import { TeamDetailsComponent } from './views/team-details/team-details.component';
 import { PersonaDetailsComponent } from './views/persona-details/persona-details.component';
+import { FooterComponent } from './views/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PersonaDetailsComponent } from './views/persona-details/persona-details
     TeamsComponent,
     MatchDetailsComponent,
     TeamDetailsComponent,
-    PersonaDetailsComponent
+    PersonaDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
