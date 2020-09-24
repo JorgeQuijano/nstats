@@ -13,10 +13,16 @@ export class MatchDetailsComponent implements OnInit {
   // private sub: any;
   selectedMatchRaw: any;
   matchid: any;
+
+  // t1
   t1ActionsXI: any;
   t1ActionsSub: any;
+  t1ActionsMgr: any;
+
+  // t2
   t2ActionsXI: any;
   t2ActionsSub: any;
+  t2ActionsMgr: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,10 +51,15 @@ export class MatchDetailsComponent implements OnInit {
       .subscribe(xt1 => {
         this.actionService.getMatchActionsSummaryt2(this.matchid)
           .subscribe(xt2 => {
+            // t1
             this.t1ActionsSub = xt1.filter(x=> x.actionshort == 'Sub');
             this.t1ActionsXI = xt1.filter(x=> x.actionshort == 'SXI');
+            this.t1ActionsMgr = xt1.filter(x=> x.actionshort == 'M');
+
+            // t2
             this.t2ActionsXI = xt2.filter(x=> x.actionshort == 'SXI');
-            this.t2ActionsSub = xt2.filter(x=> x.actionshort == 'Sub');                
+            this.t2ActionsSub = xt2.filter(x=> x.actionshort == 'Sub');
+            this.t2ActionsMgr = xt2.filter(x=> x.actionshort == 'M');            
         })
     });
   }

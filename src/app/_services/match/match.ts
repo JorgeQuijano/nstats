@@ -100,6 +100,8 @@ export interface MatchRaw {
   varref3: number;
   varref4: number;
   replay: boolean;
+  resultot: string;
+  resultso: string;
 }
 
 export interface MatchActionCount {

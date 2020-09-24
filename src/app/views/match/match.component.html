@@ -66,7 +66,12 @@
                 <!-- <td>{{x.stageshort}}</td> -->
                 <td>{{x.fmatchdate}}</td>
                 <td>{{x.t1shortname}}</td>
-                <td>{{x.t1goalft}}<span *ngIf="x.t1goalft !== null">-</span><span *ngIf="x.t1goalft == null">?</span>{{x.t2goalft}}</td>
+                <td>
+                    <span *ngIf="x.resultot == 'H'">*</span>
+                    <span *ngIf="x.resultso == 'H'">*</span>{{x.t1goalft}}<span *ngIf="x.t1goalft !== null">-</span>
+                    <span *ngIf="x.t1goalft == null">?</span>{{x.t2goalft}}<span *ngIf="x.resultot == 'A'">*</span>
+                    <span *ngIf="x.resultso == 'A'">*</span>
+                </td>
                 <td>{{x.t2shortname}}</td>
                 <!-- <td>
                     <button (click)="matchDetails(x.matchid, 'matchDetailsModal')" class="md-button"><i class="material-icons regularIcon">info</i></button>

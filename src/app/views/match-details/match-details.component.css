@@ -23,6 +23,12 @@
     font-weight: bold;
 }
 
+.rosterLabel {
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #0b9c54;
+}
+
 .resultft {
     font-weight: bold;
 }

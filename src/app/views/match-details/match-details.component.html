@@ -77,7 +77,10 @@
     <div class="matables" *ngIf="t1ActionsXI.length > 0">
         <table class="mdtable">
             <tr>
-                <td><span *ngIf="t1ActionsXI.length > 0" class="teamName">Starting XI </span></td>
+                <td>
+                    <span *ngIf="t1ActionsXI.length > 0" class="material-icons">list</span>
+                    <span *ngIf="t1ActionsXI.length > 0" class="rosterLabel"> SXI</span>
+                </td>
             </tr>
             <tr *ngFor="let x of t1ActionsXI">
                 <td>
@@ -97,7 +100,10 @@
                 <td></td>
             </tr>
             <tr>
-                <td><span *ngIf="t1ActionsSub.length > 0" class="teamName">Substitutes </span></td>
+                <td>
+                    <span *ngIf="t1ActionsSub.length > 0" class="material-icons">airline_seat_recline_normal</span>
+                    <span *ngIf="t1ActionsSub.length > 0" class="rosterLabel"> Subs</span>
+                </td>
             </tr>
             <tr *ngFor="let x of t1ActionsSub">
                 <td>
@@ -112,10 +118,28 @@
                     <span *ngIf="x.rcount" class="material-icons ricon">sensor_door</span>
                 </td>
             </tr>
+            <tr>
+                <!-- Space Manager -->
+                <td></td> 
+            </tr>
+            <tr>
+                <td>
+                    <span *ngIf="t1ActionsMgr.length > 0" class="material-icons">campaign</span>
+                    <span *ngIf="t1ActionsMgr.length > 0" class="rosterLabel"> Mgr</span>
+                </td>
+            </tr>
+            <tr *ngFor="let x of t1ActionsMgr">
+                <td>
+                    {{x.firstname.charAt(0)}}. {{x.lastname}}
+                </td>
+            </tr>
         </table>
         <table class="mdtable">
             <tr>
-                <td><span *ngIf="t2ActionsXI.length > 0" class="teamName">Starting XI </span></td>
+                <td>
+                    <span *ngIf="t2ActionsXI.length > 0" class="material-icons">list</span>
+                    <span *ngIf="t2ActionsXI.length > 0" class="rosterLabel"> SXI</span>
+                </td>
             </tr>
             <tr *ngFor="let x of t2ActionsXI">
                 <td>
@@ -135,7 +159,10 @@
                 <td></td> 
             </tr>
             <tr>
-                <td><span *ngIf="t2ActionsSub.length > 0" class="teamName">Substitutes </span></td>
+                <td>
+                    <span *ngIf="t2ActionsSub.length > 0" class="material-icons">airline_seat_recline_normal</span>
+                    <span *ngIf="t2ActionsSub.length > 0" class="rosterLabel"> Subs</span>
+                </td>
             </tr>
             <tr *ngFor="let x of t2ActionsSub">
                 <td>
@@ -148,6 +175,21 @@
                     <span *ngIf="x.ogcount" class="material-icons ricon">sports_soccer</span><span *ngIf="x.ogcount > 1" class="actionTime">({{x.ogcount}})</span>
                     <span *ngIf="x.ycount" class="material-icons yicon">sensor_door</span>
                     <span *ngIf="x.rcount" class="material-icons ricon">sensor_door</span>
+                </td>
+            </tr>
+            <tr>
+                <!-- Space Manager -->
+                <td></td> 
+            </tr>
+            <tr>
+                <td>
+                    <span *ngIf="t2ActionsMgr.length > 0" class="material-icons">campaign</span>
+                    <span *ngIf="t2ActionsMgr.length > 0" class="rosterLabel"> Mgr</span>
+                </td>
+            </tr>
+            <tr *ngFor="let x of t2ActionsMgr">
+                <td>
+                    {{x.firstname.charAt(0)}}. {{x.lastname}}
                 </td>
             </tr>
         </table>
