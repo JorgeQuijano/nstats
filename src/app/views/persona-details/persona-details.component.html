@@ -1,0 +1,72 @@
+<div *ngIf="selectedPersona" class="persona-details-container">
+    <h4>Persona Details</h4>
+    <span>{{selectedPersona.fullname}} ({{selectedPersona.nationality}}, {{selectedPersona.citizenship}})</span>
+    <br>
+    <span>{{selectedPersona.fdob}}</span>
+    <br>
+    <span *ngIf="selectedPersona.notes != ''">{{selectedPersona.notes}}</span>
+    <br>
+    <table *ngIf="personaSummary.length > 0" class="pstable">
+        <tr>
+            <th></th>
+            <th></th>
+            <!-- Played -->
+            <th></th>
+            <!-- Bench -->
+            <th><i class="material-icons regularIcon">airline_seat_recline_normal</i></th>
+            <!-- Goals --> 
+            <th><i class="material-icons gicon">sports_soccer</i></th>
+            <!-- Assists -->
+            <th><i class="material-icons regularIcon">connect_without_contact</i></th>
+            <!-- Yellow Cards -->
+            <th><i class="material-icons yicon">sensor_door</i></th>
+            <!-- Red Cards -->
+            <th><i class="material-icons ricon">sensor_door</i></th>
+            <!-- Missed Penalties -->
+            <th></th>
+            <!-- Penalties Saved -->
+            <th><i class="material-icons regularIcon">sports_handball</i></th>
+            <!-- Own Goals -->
+            <th><i class="material-icons ricon">sports_soccer</i></th>
+            <!-- Hits the post -->
+            <th></th>
+            <!-- Penalties Conceded -->
+            <th><i class="material-icons regularIcon">sports_kabaddi</i></th>
+            <!-- Manager/DT/Coach -->
+            <th><i class="material-icons regularIcon">support_agent</i></th>
+        </tr>
+        <tr>
+            <th *ngFor="let x of tableHeaders">
+                {{x.header}}
+            </th>
+        </tr>
+        <tr *ngFor="let x of personaSummary">
+            <td>{{x.season}}</td>
+            <td>{{x.compcode}}</td>
+            <td>{{x.sxi}}</td>
+            <td>{{x.sub}}</td>
+            <td>{{x.g}}</td>
+            <td>{{x.a}}</td>
+            <td>{{x.y}}</td>
+            <td>{{x.r}}</td>
+            <td>{{x.mp}}</td>
+            <td>{{x.ps}}</td>
+            <td>{{x.og}}</td>
+            <td>{{x.p}}</td>
+            <td>{{x.pc}}</td>
+            <td>{{x.m}}</td>
+        </tr>
+    </table>
+    <span *ngIf="personaSummary.length == 0">No data found for this persona.</span>
+    <br>
+</div>
+<div>
+    <button class="show-labels-button" (click)="hideLabels()">
+        Labels
+    </button>
+    <div *ngIf="showlabels" class="labels-container">
+        <span *ngFor="let x of tableHeaders">
+            <span class="header">{{x.header}}: </span> <span class="label">{{x.label}}</span>
+        </span>
+    </div>
+</div>
