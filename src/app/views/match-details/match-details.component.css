@@ -63,6 +63,5 @@
 
 .material-icons{
     display: inline-flex;
-    vertical-align: top;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
