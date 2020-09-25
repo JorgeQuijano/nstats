@@ -82,7 +82,7 @@
                     <span *ngIf="t1ActionsXI.length > 0" class="rosterLabel"> SXI</span>
                 </td>
             </tr>
-            <tr *ngFor="let x of t1ActionsXI">
+            <tr *ngFor="let x of t1ActionsXI" target="_blank" [routerLink]="['/persona', x.personaid]">
                 <td>
                     <span *ngIf="x.sbo_time" class="material-icons ricon">swap_vert</span><span *ngIf="x.sbo_time" class="actionTime">{{x.sbo_time}}"</span>
                     <span *ngIf="x.sbi_time" class="material-icons gicon">swap_vert</span><span *ngIf="x.sbi_time" class="actionTime">{{x.sbi_time}}"</span>
@@ -105,7 +105,7 @@
                     <span *ngIf="t1ActionsSub.length > 0" class="rosterLabel"> Subs</span>
                 </td>
             </tr>
-            <tr *ngFor="let x of t1ActionsSub">
+            <tr *ngFor="let x of t1ActionsSub" target="_blank" [routerLink]="['/persona', x.personaid]">
                 <td>
                     <span *ngIf="x.sbo_time" class="material-icons ricon">swap_vert</span><span *ngIf="x.sbo_time" class="actionTime">{{x.sbo_time}}"</span>
                     <span *ngIf="x.sbi_time" class="material-icons gicon">swap_vert</span><span *ngIf="x.sbi_time" class="actionTime">{{x.sbi_time}}"</span>
@@ -128,7 +128,7 @@
                     <span *ngIf="t1ActionsMgr.length > 0" class="rosterLabel"> Mgr</span>
                 </td>
             </tr>
-            <tr *ngFor="let x of t1ActionsMgr">
+            <tr *ngFor="let x of t1ActionsMgr" target="_blank" [routerLink]="['/persona', x.personaid]">
                 <td>
                     {{x.firstname.charAt(0)}}. {{x.lastname}}
                 </td>
@@ -141,7 +141,7 @@
                     <span *ngIf="t2ActionsXI.length > 0" class="rosterLabel"> SXI</span>
                 </td>
             </tr>
-            <tr *ngFor="let x of t2ActionsXI">
+            <tr *ngFor="let x of t2ActionsXI" target="_blank" [routerLink]="['/persona', x.personaid]">
                 <td>
                     <span *ngIf="x.sbo_time" class="material-icons ricon">swap_vert</span><span *ngIf="x.sbo_time" class="actionTime">{{x.sbo_time}}"</span>
                     <span *ngIf="x.sbi_time" class="material-icons gicon">swap_vert</span><span *ngIf="x.sbi_time" class="actionTime">{{x.sbi_time}}"</span>
@@ -164,7 +164,7 @@
                     <span *ngIf="t2ActionsSub.length > 0" class="rosterLabel"> Subs</span>
                 </td>
             </tr>
-            <tr *ngFor="let x of t2ActionsSub">
+            <tr *ngFor="let x of t2ActionsSub" target="_blank" [routerLink]="['/persona', x.personaid]">
                 <td>
                     <span *ngIf="x.sbo_time" class="material-icons ricon">swap_vert</span><span *ngIf="x.sbo_time" class="actionTime">{{x.sbo_time}}"</span>
                     <span *ngIf="x.sbi_time" class="material-icons gicon">swap_vert</span><span *ngIf="x.sbi_time" class="actionTime">{{x.sbi_time}}"</span>
@@ -187,7 +187,7 @@
                     <span *ngIf="t2ActionsMgr.length > 0" class="rosterLabel"> Mgr</span>
                 </td>
             </tr>
-            <tr *ngFor="let x of t2ActionsMgr">
+            <tr *ngFor="let x of t2ActionsMgr" target="_blank" [routerLink]="['/persona', x.personaid]">
                 <td>
                     {{x.firstname.charAt(0)}}. {{x.lastname}}
                 </td>
