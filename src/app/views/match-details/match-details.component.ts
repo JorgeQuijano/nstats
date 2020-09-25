@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 
 import { MatchService } from "../../_services/match/match.service";
 import { ActionService } from "../../_services/action/action.service";
@@ -31,8 +31,8 @@ export class MatchDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.matchid = +params['id'];
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.matchid = +params.get('id');
       this.getMatchStats();
       this.getMatchActions();
     });
