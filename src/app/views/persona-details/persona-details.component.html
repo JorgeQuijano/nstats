@@ -1,6 +1,10 @@
 <div *ngIf="selectedPersona" class="persona-details-container">
     <h4>Persona Details</h4>
-    <span>{{selectedPersona.fullname}} ({{selectedPersona.nationality}}, {{selectedPersona.citizenship}})</span>
+    <span>{{selectedPersona.fullname}}</span>
+    <br>
+    <span>Born: {{selectedPersona.nat_country}}</span>
+    <br>
+    <span>Citizenship: {{selectedPersona.cit_country}}</span>
     <br>
     <span>{{selectedPersona.fdob}}</span>
     <br>

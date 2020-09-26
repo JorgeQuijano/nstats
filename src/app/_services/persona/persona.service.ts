@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../../config';
 
 import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
-import { Persona } from "./persona";
+import { Persona, PersonaRaw } from "./persona";
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
 const httpOptions = {
@@ -35,8 +35,8 @@ export class PersonaService {
       );
   };
 
-  getPersona (personaid: number): Observable<Persona[]> {
-    return this.http.get<Persona[]>(this.APIURL+`/${personaid}`)
+  getPersona (personaid: number): Observable<PersonaRaw[]> {
+    return this.http.get<PersonaRaw[]>(this.APIURL+`/${personaid}`)
       .pipe(
         catchError(this.handleError('getPersona', []))
       );
