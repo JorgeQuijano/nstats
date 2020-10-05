@@ -1,5 +1,8 @@
 <div class="matchDetails">
-    <span class="matchTeams">{{selectedMatchRaw.t1shortname}}-{{selectedMatchRaw.t2shortname}}</span>
+    <span class="matchTeams">
+        <span href='' target="_blank" [routerLink]="['/team', selectedMatchRaw.t1]">{{selectedMatchRaw.t1shortname}}</span>-
+        <span href='' target="_blank" [routerLink]="['/team', selectedMatchRaw.t2]">{{selectedMatchRaw.t2shortname}}</span>
+    </span>
     <br>
     <span>{{selectedMatchRaw.seasonname}} - {{selectedMatchRaw.compname}}</span>
     <br>
@@ -16,9 +19,9 @@
     
     <table class="mdtable">
     <tr *ngIf="selectedMatchRaw.t1goalft !== null">
-        <th>{{selectedMatchRaw.t1code}}</th>
+        <th href='' target="_blank" [routerLink]="['/team', selectedMatchRaw.t1]">{{selectedMatchRaw.t1code}}</th>
         <th>{{selectedMatchRaw.t1goalft}} - {{selectedMatchRaw.t2goalft}}</th>
-        <th>{{selectedMatchRaw.t2code}}</th>
+        <th href='' target="_blank" [routerLink]="['/team', selectedMatchRaw.t2]">{{selectedMatchRaw.t2code}}</th>
     </tr>
     <tr *ngIf="selectedMatchRaw.t1goalht !== null">
         <td>{{selectedMatchRaw.t1goalht}}</td>
@@ -78,7 +81,6 @@
         <table class="mdtable">
             <tr>
                 <td>
-                    <span *ngIf="t1ActionsXI.length > 0" class="material-icons">list</span>
                     <span *ngIf="t1ActionsXI.length > 0" class="rosterLabel"> SXI</span>
                 </td>
             </tr>
@@ -101,7 +103,6 @@
             </tr>
             <tr>
                 <td>
-                    <span *ngIf="t1ActionsSub.length > 0" class="material-icons">airline_seat_recline_normal</span>
                     <span *ngIf="t1ActionsSub.length > 0" class="rosterLabel"> Subs</span>
                 </td>
             </tr>
@@ -124,7 +125,6 @@
             </tr>
             <tr>
                 <td>
-                    <span *ngIf="t1ActionsMgr.length > 0" class="material-icons">campaign</span>
                     <span *ngIf="t1ActionsMgr.length > 0" class="rosterLabel"> Mgr</span>
                 </td>
             </tr>
@@ -137,7 +137,6 @@
         <table class="mdtable">
             <tr>
                 <td>
-                    <span *ngIf="t2ActionsXI.length > 0" class="material-icons">list</span>
                     <span *ngIf="t2ActionsXI.length > 0" class="rosterLabel"> SXI</span>
                 </td>
             </tr>
@@ -154,13 +153,15 @@
                     <span *ngIf="x.rcount" class="ricon">▮</span>
                 </td>
             </tr>
+            <!-- Space Subs -->
             <tr>
-                <!-- Space Subs -->
+                <td></td> 
+            </tr>
+            <tr>
                 <td></td> 
             </tr>
             <tr>
                 <td>
-                    <span *ngIf="t2ActionsSub.length > 0" class="material-icons">airline_seat_recline_normal</span>
                     <span *ngIf="t2ActionsSub.length > 0" class="rosterLabel"> Subs</span>
                 </td>
             </tr>
@@ -177,13 +178,15 @@
                     <span *ngIf="x.rcount" class="ricon">▮</span>
                 </td>
             </tr>
+            <!-- Space Manager -->
             <tr>
-                <!-- Space Manager -->
+                <td></td> 
+            </tr>
+            <tr>
                 <td></td> 
             </tr>
             <tr>
                 <td>
-                    <span *ngIf="t2ActionsMgr.length > 0" class="material-icons">campaign</span>
                     <span *ngIf="t2ActionsMgr.length > 0" class="rosterLabel"> Mgr</span>
                 </td>
             </tr>
