@@ -2,7 +2,7 @@
 body {
     font-family: 'Red Hat Display', sans-serif;
     color: whitesmoke;
-    background-color: black;
+    background-color: #101010;
     height: 100vh;
     margin: 0;
     display: flex;

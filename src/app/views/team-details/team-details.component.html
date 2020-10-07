@@ -3,10 +3,10 @@
         {{selectedTeam.teamfullname}}
     </span>
     <br>
-    <span>
+    <span *ngIf="selectedTeam.city">
         ({{selectedTeam.city}}, {{selectedTeam.countryname}})
     </span>
-    <br>
+    <br *ngIf="selectedTeam.city">
     <span>
         {{selectedTeam.association}} - {{selectedTeam.confederation}}
     </span>

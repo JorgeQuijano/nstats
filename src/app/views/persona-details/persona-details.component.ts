@@ -13,6 +13,7 @@ export class PersonaDetailsComponent implements OnInit {
   showlabels = false;
   selectedPersona: any;
   personaSummary: any;
+  personaAge: number;
 
   tableHeaders = [
     {'header': 'S', 'label': 'Season'},
