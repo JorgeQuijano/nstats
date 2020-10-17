@@ -36,9 +36,11 @@
             <td>{{mm.against}}</td>
             <!-- FT Result -->
             <td>
-                <span *ngIf="mm.resultft == 'W'"><i class="material-icons gicon">check_circle</i></span>
-                <span *ngIf="mm.resultft == 'D'"><i class="material-icons yicon">lens</i></span>
-                <span *ngIf="mm.resultft == 'L'"><i class="material-icons ricon">cancel</i></span>
+                <span *ngIf="mm.goalft !== null">
+                    <span *ngIf="mm.resultft == 'W'"><i class="material-icons gicon">check_circle</i></span>
+                    <span *ngIf="mm.resultft == 'D'"><i class="material-icons yicon">lens</i></span>
+                    <span *ngIf="mm.resultft == 'L'"><i class="material-icons ricon">cancel</i></span>
+                </span>
             </td>
             <!-- <td>{{mm.goalht}}-{{mm.xgoalht}}</td> -->
             <!-- HT Result -->
