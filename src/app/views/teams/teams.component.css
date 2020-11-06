@@ -21,6 +21,7 @@ button{
 .ttable td {
     border: 1px solid grey;
     text-align: center;
+    height: 28px;
   }
 
 .ttable th {
@@ -28,6 +29,7 @@ button{
     text-align: center;
     font-weight: bold;
     background-color: #006633;
+    height: 28px;
 }
 
 .ttable tr:nth-child(even){background-color: #282828;}
@@ -49,6 +51,18 @@ button{
         border: 1px solid grey;
         margin-left: auto;
         margin-right: auto;
+    }
+    .ttable td {
+        border: 1px solid grey;
+        text-align: center;
+        height: 23px;
+    }
+    .ttable th {
+        border: 1px solid grey;
+        text-align: center;
+        font-weight: bold;
+        background-color: #006633;
+        height: 23px;
     }
 
     .persona-search {

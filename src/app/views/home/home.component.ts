@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   matchDetails(mid:string):void {
-    this.router.navigate([]).then(result => {  window.open(mid, '_blank'); });
+    this.router.navigate([]).then(result => {  window.open('match/'+mid, '_blank'); });
   }
 
   sortTable(x:string): void {

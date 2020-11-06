@@ -1,5 +1,6 @@
 <h3>Recent Matches</h3>
-<!-- <input type="date"> -->
+<input type="date">
+<br>
 <br>
 <!-- Match Table -->
 <div>
@@ -14,7 +15,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr href="" *ngFor="let x of matches" target="_blank" [routerLink]="['/match', x.matchid]">
+            <!-- <tr href="" *ngFor="let x of matches" target="_blank" [routerLink]="['/match', x.matchid]"> -->
+            <tr href="" *ngFor="let x of matches" (click)="matchDetails(x.matchid)">
                 <td>{{x.compcode}}</td>
                 <td>{{x.fmatchdate}}</td>
                 <td>{{x.t1shortname}}</td>

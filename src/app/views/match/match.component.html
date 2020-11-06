@@ -58,8 +58,8 @@
             </tr>
         </thead>
         <tbody>
-            <!-- <tr *ngFor="let x of pagedItems" (click)="matchDetails(x.matchid, 'matchDetailsModal')"> -->
-            <tr *ngFor="let x of pagedItems" target="_blank" [routerLink]="['/match', x.matchid]">
+            <tr *ngFor="let x of pagedItems" (click)="matchDetails(x.matchid)">
+            <!-- <tr *ngFor="let x of pagedItems" target="_blank" [routerLink]="['/match', x.matchid]"> -->
             <!-- <tr *ngFor="let x of pagedItems" (click)="matchDetails('/match-details/'+x.matchid)"> -->
                 <td>{{x.compcode}}</td>
                 <!-- <td>{{x.seasonname}}</td> -->

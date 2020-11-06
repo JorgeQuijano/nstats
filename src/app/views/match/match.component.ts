@@ -90,9 +90,7 @@ export class MatchComponent implements OnInit {
   }
 
   matchDetails(mid:string):void {
-    let url = this.router.serializeUrl(
-      this.router.createUrlTree([mid])
-    );
+    this.router.navigate([]).then(result => {  window.open('match/'+mid, '_blank'); });
   }
 
   setPage(page: number) { 
