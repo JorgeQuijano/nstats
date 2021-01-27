@@ -30,33 +30,6 @@
 .mtable tr:hover {background-color: grey;}
 
 
-@media screen and (min-width: 800px) {
-    .mtable {
-        width: auto;
-        border-collapse: collapse;
-        border: 1px solid grey;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 16px;
-    }
-
-    .mtable td {
-        border: 1px solid grey;
-        text-align: center;
-        font-size: 16px;
-        height: 23px;
-      }
-    
-    .mtable th {
-        border: 1px solid grey;
-        text-align: center;
-        font-weight: bold;
-        background-color: #006633;
-        font-size: 16px;
-        height: 23px;
-    }
-}
-
 /* Match Details Table */
 
 .mdtable {
@@ -223,4 +196,32 @@ font-weight: bold;
     display: inline-flex;
     vertical-align: top;
     vertical-align: bottom;
+}
+
+@media screen and (min-width: 800px) {
+    .mtable {
+        width: auto;
+        border-collapse: collapse;
+        border: 1px solid grey;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+    }
+
+    .mtable td {
+        border: 1px solid grey;
+        text-align: center;
+        font-size: 16px;
+        height: 23px;
+      }
+    
+    .mtable th {
+        border: 1px solid grey;
+        text-align: center;
+        font-weight: bold;
+        background-color: #006633;
+        font-size: 16px;
+        height: 23px;
+    }
+    
 }
